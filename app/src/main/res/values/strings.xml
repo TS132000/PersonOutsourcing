@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">PeopleOutsourcing</string>
+    <string name="app_name"> 龙猫众包</string>
+
+    <string name="splash_describe">闲暇时间也能创造价值</string>
 </resources>
