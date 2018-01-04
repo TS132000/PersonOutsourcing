@@ -2,4 +2,19 @@
     <string name="app_name"> 龙猫众包</string>
 
     <string name="splash_describe">闲暇时间也能创造价值</string>
+
+    <!--首页左上角标题文字 -->
+    <string name="baseFragmentTitle1">赚钱</string>
+    <string name="baseFragmentTitle2">邀请赚钱</string>
+    <string name="baseFragmentTitle3">发现</string>
+
+    <!--首页右上角按钮文字-->
+    <string name="baseFragmentButtonRight1">审核情况</string>
+    <string name="baseFragmentButtonRight2">余额</string>
+    <string name="baseFragmentButtonRight3">红包</string>
+
+
+
+
+
 </resources>

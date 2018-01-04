@@ -1,52 +1,36 @@
 package com.genimous.peopleoutsourcing.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v4.view.ViewPager;
 
 import com.genimous.peopleoutsourcing.base.BaseActivity;
+import com.genimous.peopleoutsourcing.base.BaseFragment;
+import com.genimous.peopleoutsourcing.fragment.MakeMoneyFragment;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+import me.majiajie.pagerbottomtabstrip.PageBottomTabLayout;
+
 
 public class MainActivity extends BaseActivity {
 
-    Button btn;
-    TextView tv ;
+    PageBottomTabLayout tabLayout;
+    ViewPager viewPager;
+
+    private BaseFragment[] mFragments = new BaseFragment[3];
+//    private MakeMoneyFragment make
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.base_fragment);
 
-
+        tabLayout = (PageBottomTabLayout)findViewById(R.id.PageBottomTabLayout_mainActivity);
+        viewPager = (ViewPager)findViewById(R.id.ViewPager_mainActivity);
 
     }
 
-//    @Subscribe(threadMode = ThreadMode.POSTING)
-//    public void onEventMainThread(FirstEvent event){
-//        String msg = "onEventMainThread:::"+event.getMsg();
-//        Log.d("aaa","msg === "+msg);
-//        tv.setText(msg);
-//        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-//
-//
-//    }
-
-//    @Subscribe(threadMode = ThreadMode.POSTING)
-//    public void onEvent(SecondEvent event){
-//        String msg = "onEvent:::"+event.getmMsg();
-//        Log.d("aaa","msg === "+msg);
-//    }
-//
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);//反注册
     }
 }

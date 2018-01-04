@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="mainactivity"/>
+        android:text="@string/splash_describe"/>
     <LinearLayout
         android:layout_above="@+id/splashDescribe"
         android:layout_width="match_parent"

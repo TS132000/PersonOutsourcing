@@ -7,40 +7,23 @@
     tools:context="com.genimous.peopleoutsourcing.activity.MainActivity">
 
 
-    <TextView
-        android:layout_marginBottom="8dp"
-        android:id="@+id/splashDescribe"
+    <me.majiajie.pagerbottomtabstrip.PageBottomTabLayout
+        android:id="@+id/PageBottomTabLayout_mainActivity"
         android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="@string/splash_describe"/>
-    <LinearLayout
-        android:layout_above="@+id/splashDescribe"
+        android:background="@color/white"
+        android:elevation="8dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ViewPager_mainActivity"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/iconImage"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@mipmap/icon"/>
-        <TextView
-            android:id="@+id/text"
-            android:gravity="bottom"
-            android:textSize="20dp"
-            android:layout_marginLeft="4dp"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/PageBottomTabLayout_mainActivity" />
 
-            android:text="@string/app_name"/>
-
-    </LinearLayout>
-
-
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/PageBottomTabLayout_mainActivity"
+        android:background="@drawable/bg_bottom_line" />
 </RelativeLayout>
