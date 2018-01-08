@@ -12,9 +12,6 @@
     <string name="baseFragmentButtonRight1">审核情况</string>
     <string name="baseFragmentButtonRight2">余额</string>
     <string name="baseFragmentButtonRight3">红包</string>
-
-
-
-
+    <string name="noNetText">网络出现问题，请点击重试 \n 网络未链接</string>
 
 </resources>

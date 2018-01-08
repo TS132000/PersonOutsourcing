@@ -2,6 +2,7 @@ package com.genimous.peopleoutsourcing.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public abstract class BaseFragment extends SupportFragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
-
+        Log.i("aaa", "layoutID === "+getLayoutId());
         View view  = inflater.inflate(getLayoutId(), container, false);
         initView(view , savedInstanceState);
         return view;
