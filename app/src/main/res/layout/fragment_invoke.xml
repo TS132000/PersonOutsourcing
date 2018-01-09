@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.genimous.peopleoutsourcing.activity.MainActivity">
+
+
+    <include
+        android:id="@+id/invokeTitile"
+        layout="@layout/base_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        />
+    <com.genimous.peopleoutsourcing.widget.LoadStatusView
+        android:id="@+id/LoadStatusView_Invoke_status"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/invokeTitile"
+        android:background="@color/black" />
+
+</RelativeLayout>
+

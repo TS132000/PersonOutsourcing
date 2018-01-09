@@ -80,10 +80,10 @@ public class MainActivity extends BaseActivity {
 
         // 初始化底部Tab
         navigationController = tabLayout.custom()
-                .addItem(buildTabItem(R.drawable.ysf_def_avatar_staff, R.drawable.img_tab_make_money_checked, "赚钱"))
-                .addItem(buildTabItem(R.drawable.ysf_def_avatar_staff, R.drawable.img_tab_invite_checked, "邀请"))
-                .addItem(buildTabItem(R.drawable.ysf_def_avatar_staff, R.drawable.img_tab_discovery_check, "发现"))
-                .addItem(buildTabItem(R.drawable.ysf_def_avatar_staff, R.drawable.img_tab_mine_checked, "我的"))
+                .addItem(buildTabItem(R.drawable.img_tab_make_money_up, R.drawable.img_tab_make_money_checked, "赚钱"))
+                .addItem(buildTabItem(R.drawable.img_tab_invite_up, R.drawable.img_tab_invite_checked, "邀请"))
+                .addItem(buildTabItem(R.drawable.img_tab_discovery_up, R.drawable.img_tab_discovery_check, "发现"))
+                .addItem(buildTabItem(R.drawable.img_tab_mine_up, R.drawable.img_tab_mine_checked, "我的"))
                 .build();
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override

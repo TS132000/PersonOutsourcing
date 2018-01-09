@@ -53,8 +53,8 @@ public class LoadStatusView extends LinearLayout{
 
             }
         });
-        initNoNetView();
         initStubView();
+        initNoNetView();
     }
 
     private void initStubView() {

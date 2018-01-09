@@ -15,13 +15,13 @@ public class InviteFragment extends BaseFragment {
     LoadStatusView mLoadStatusView;
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-//        mLoadStatusView = (LoadStatusView)view.findViewById(R.id.LoadStatusView_MakeMoney_status);
-//        mLoadStatusView.setViewStatus(LoadStatusView.LoadStatus.NO_NET);
+        mLoadStatusView = (LoadStatusView)view.findViewById(R.id.LoadStatusView_Invoke_status);
+        mLoadStatusView.setViewStatus(LoadStatusView.LoadStatus.NO_NET);
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_makemoney;
+        return R.layout.fragment_invoke;
     }
 
     public static InviteFragment newInstance(Bundle bundle) {
