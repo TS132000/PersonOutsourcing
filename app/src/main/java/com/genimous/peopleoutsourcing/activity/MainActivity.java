@@ -44,8 +44,8 @@ public class MainActivity extends BaseActivity {
 
         //初始化fragments
         mFragments[0] = MakeMoneyFragment.newInstance(new Bundle());
-        mFragments[1] = DiscoverFragment.newInstance(new Bundle());
-        mFragments[2] = InviteFragment.newInstance(new Bundle());
+        mFragments[1] = InviteFragment.newInstance(new Bundle());
+        mFragments[2] = DiscoverFragment.newInstance(new Bundle());
         mFragments[3] = UserCenterFragment.newInstance(new Bundle());
 
         // 初始化ViewPager
@@ -67,6 +67,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+
             }
 
             @Override

@@ -13,12 +13,60 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         />
-    <com.genimous.peopleoutsourcing.widget.LoadStatusView
-        android:id="@+id/LoadStatusView_Invoke_status"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
         android:layout_below="@id/invokeTitile"
-        android:background="@color/black" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <android.support.v4.view.ViewPager
+           android:id="@+id/Viewpager_invokeFragment_top"
+           android:layout_width="match_parent"
+           android:layout_height="200dp">
+
+       </android.support.v4.view.ViewPager>
+
+        <RelativeLayout
+            android:id="@+id/RL_invokeFragment"
+
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textInvoke1_invokeFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邀请好友入驻"
+                android:textSize="@dimen/f1"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/textInvoke1_invokeFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="您获得1.5元／人邀请奖励及10%徒弟提成"
+                android:textSize="@dimen/f7"/>
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/share_btn"/>
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/Viewpager_invokeFragment_bottom"
+            android:layout_above="@id/RL_invokeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        </android.support.v4.view.ViewPager>
+
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
 
