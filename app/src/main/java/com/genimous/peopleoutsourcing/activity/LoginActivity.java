@@ -1,24 +1,27 @@
 package com.genimous.peopleoutsourcing.activity;
 
-import com.genimous.peopleoutsourcing.base.BaseActivity;
-import com.genimous.peopleoutsourcing.bean.UserBean;
-import com.genimous.peopleoutsourcing.viewlistener.LoginView;
+import android.os.Bundle;
+
+import com.genimous.core.base.BaseMvpActivity;
+import com.genimous.peopleoutsourcing.contract.LoginContract;
+import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
+import com.genimous.peopleoutsourcing.presenter.LoginPresenter;
 
 /**
  * Created by wudi on 18/1/11.
  */
 
-public class LoginActivity extends BaseActivity implements LoginView{
+public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements LoginContract.loginView{
 
 
     @Override
-    public String getUserName() {
-        return null;
+    public void loginSuccess(UserInfoEntity infoEntity) {
+
     }
 
     @Override
-    public String getPassword() {
-        return null;
+    public void loginFailed(String msg) {
+
     }
 
     @Override
@@ -32,12 +35,17 @@ public class LoginActivity extends BaseActivity implements LoginView{
     }
 
     @Override
-    public void showSuccessMsg(UserBean userBean) {
-
+    protected LoginPresenter onLoadPresenter() {
+        return null;
     }
 
     @Override
-    public void clearEditText() {
+    protected int getLayoutResource() {
+        return 0;
+    }
+
+    @Override
+    protected void onInitialization(Bundle bundle) {
 
     }
 }

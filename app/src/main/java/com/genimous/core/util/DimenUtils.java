@@ -1,4 +1,4 @@
-package com.genimous.peopleoutsourcing.utils;
+package com.genimous.core.util;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

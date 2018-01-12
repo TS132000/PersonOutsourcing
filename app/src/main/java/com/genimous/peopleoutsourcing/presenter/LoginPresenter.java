@@ -1,64 +1,32 @@
 package com.genimous.peopleoutsourcing.presenter;
 
-import com.genimous.peopleoutsourcing.bean.UserBean;
-import com.genimous.peopleoutsourcing.model.LoginModel;
-import com.genimous.peopleoutsourcing.model.LoginModelImpl;
-import com.genimous.peopleoutsourcing.viewlistener.LoginView;
+import android.text.TextUtils;
 
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+import com.genimous.core.mvp.BasePresenter;
+import com.genimous.core.util.ToastUtil;
+import com.genimous.peopleoutsourcing.contract.LoginContract;
 
 /**
- * Created by wudi on 18/1/11.
+ * Created by wudi on 18/1/12.
  */
 
-public class LoginPresenter  {
+public class LoginPresenter extends BasePresenter<LoginContract.loginView, LoginContract.loginModle> implements LoginContract.loginModle{
+    @Override
+    public void login(String userName, String pwd) {
+        if (TextUtils.isEmpty(userName)) {
+            ToastUtil.show("请填写用户名");
+            return;
+        }
+        if (TextUtils.isEmpty(pwd)) {
+            ToastUtil.show("请填写密码");
+            return;
+        }
 
-    private LoginView loginView;
-    private LoginModel loginModel;
-    private Handler mHandler;
-
-    public LoginPresenter(LoginView loginView){
-        this.loginView = loginView;
-        loginModel = new LoginModelImpl();
-        mHandler = new Handler() {
-            @Override
-            public void publish(LogRecord logRecord) {
-
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public void close() throws SecurityException {
-
-            }
-        };
-
+        toLogin(userName, pwd);
     }
 
-    public void login(){
-        loginView.showLoading();
-        loginModel.login(loginView.getUserName(), loginView.getPassword(), new LoginModel.OnLoginListener() {
-            @Override
-            public void loginSuccess(UserBean userBean) {
-                //登录成功
-
-            }
-
-            @Override
-            public void loginFailed(String s) {
-                //登录失败
-
-            }
-        });
-    }
-
-    public void clear(){
-        loginView.clearEditText();
+    public void toLogin(String username, String pwd) {
+        //联网
     }
 
 }

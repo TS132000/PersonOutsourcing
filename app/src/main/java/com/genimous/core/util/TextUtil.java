@@ -1,4 +1,4 @@
-package com.genimous.peopleoutsourcing.utils;
+package com.genimous.core.util;
 
 import android.content.Context;
 import android.text.TextPaint;
@@ -70,7 +70,7 @@ public class TextUtil {
     public static String longToDate(long time) {
         if (time != 0) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            java.util.Date dt = new Date(time);
+            Date dt = new Date(time);
             String sDateTime = sdf.format(dt);
             return sDateTime;
         } else {
