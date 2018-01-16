@@ -3,12 +3,13 @@ package com.genimous.peopleoutsourcing.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.genimous.peopleoutsourcing.base.BaseActivity;
+import com.genimous.peopleoutsourcing.utils.AppUser;
 
-import org.greenrobot.eventbus.EventBus;
 
 public class SplashActivity extends BaseActivity {
 
@@ -30,9 +31,18 @@ public class SplashActivity extends BaseActivity {
 
 
     private void startMainActivity(){
-        Intent in = new Intent(SplashActivity.this, MainActivity.class);
-        startActivity(in);
-        finish();
+
+        if (AppUser.isLogin()) {
+            Intent in = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(in);
+            finish();
+        } else {
+
+            Log.i("aaa","a aaaaaaaaaaa ");
+            Intent in = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(in);
+            finish();
+        }
     }
 
     @Override

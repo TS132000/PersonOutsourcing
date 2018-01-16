@@ -340,4 +340,12 @@
     <color name="ysf_white">@android:color/white</color>
     <color name="ysf_white_99FFFFFF">#99ffffff</color>
     <color name="ysf_window_background">@color/ysf_grey_fafafa</color>
+
+
+    <color name="divideLine">#f3f3f3</color>
+
+    <color name="textMain">#222222</color>
+    <color name="textSub">#7e7e7e</color>
+    <color name="textHint">#aaaaaa</color>
+
 </resources>

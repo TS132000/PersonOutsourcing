@@ -31,7 +31,8 @@ dependencies {
 
     compile 'me.yokeyword:fragmentation:1.1.9'
     compile 'me.yokeyword:fragmentation-swipeback:1.1.9'
-    compile 'org.greenrobot:eventbus:3.0.0'
+    //okhttp
+    compile 'com.zhy:okhttputils:2.6.2'
 
     /* 嵌套fragment */
     compile 'me.majiajie:pager-bottom-tab-strip:2.1.0'

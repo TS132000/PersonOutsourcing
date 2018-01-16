@@ -2,7 +2,7 @@ package com.genimous.core.util;
 
 import android.widget.Toast;
 
-import com.genimous.peopleoutsourcing.activity.MyAppliction;
+import com.genimous.peopleoutsourcing.activity.MyApplication;
 
 /**
  * @author Mr.xiao
@@ -21,7 +21,7 @@ public class ToastUtil {
      * @param duration     显示时长 Toast.LENGTH_LONG/LENGTH_SHORT
      */
     public static void show(CharSequence charSequence, int duration) {
-        MyAppliction.ToastManager.instance.show(charSequence, duration);
+        MyApplication.ToastManager.instance.show(charSequence, duration);
     }
 
 }

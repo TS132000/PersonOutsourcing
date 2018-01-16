@@ -14,4 +14,14 @@
     <string name="baseFragmentButtonRight3">红包</string>
     <string name="noNetText">网络出现问题，请点击重试 \n 网络未链接</string>
 
+
+    <string name="login">登录</string>
+    <string name="login_num">输入手机号码</string>
+    <string name="login_right_num">请输入正确手机号</string>
+    <string name="login_identifying_code">输入验证码</string>
+    <string name="login_send_identifying_code">发送验证码</string>
+    <string name="login_identifying_code_not_null">验证码不得为空</string>
+    <string name="login_get_identifying_code">获取验证码</string>
+    <string name="login_desc">登录即表示您同意</string>
+    <string name="login_agreement">&#060;龙猫服务协议&#062;</string>
 </resources>

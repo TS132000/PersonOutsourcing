@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.genimous.core.base.BaseApplication;
+import com.genimous.peopleoutsourcing.utils.AppUser;
 
 /**
  * Created by wudi on 18/1/12.
@@ -15,14 +16,15 @@ import com.genimous.core.base.BaseApplication;
  * 参考 https://github.com/xiaohaibin/DMGameApp.git
  */
 
-public class MyAppliction extends BaseApplication {
+public class MyApplication extends BaseApplication {
 
     @Override
     public void onCreate() {
         super.onCreate();
         //初始化Toast
         ToastManager.instance.init(this);
-
+        //初始化用户数据
+        AppUser.init();
     }
 
     public enum ToastManager {

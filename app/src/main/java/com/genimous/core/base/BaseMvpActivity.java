@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 
 import com.genimous.core.mvp.IPresenter;
@@ -30,11 +31,15 @@ public abstract class BaseMvpActivity<P extends IPresenter> extends AppCompatAct
         }
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); Log.i("aaa","onCreateonCreateonCreate");
+
+        if (getLayoutResource() != 0) {
+            setContentView(getLayoutResource());
+        }
         onInitialization(savedInstanceState);
         onInitPresenter();
 

@@ -11,7 +11,9 @@ import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
 public interface LoginContract {
 
      interface loginModle extends IModel{
-        void login (String userName, String pwd);
+        void login (String mobileNum, String captcha);
+
+        void verificationCode (String mobileNum);
     }
 
      interface  loginView extends IView{
@@ -23,6 +25,10 @@ public interface LoginContract {
         void showLoading();
 
         void hideLoading();
+
+        void VerificationCodeSuccess();
+
+        void VerificationCodeFailed(String msg);
 
     }
 }
