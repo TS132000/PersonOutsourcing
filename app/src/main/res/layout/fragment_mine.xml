@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_fff2f2f2"
+    android:fillViewport="true"
+    android:overScrollMode="always">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/header_background_height">
+
+            <ImageView
+                android:id="@+id/header_background_sdv"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                android:background="@drawable/header_background_image"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/head_icon_sdv"
+                    android:layout_width="@dimen/header_icon_size"
+                    android:layout_height="@dimen/header_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon"
+                    android:layout_marginLeft="@dimen/dp_22" />
+
+                <LinearLayout
+                    android:id="@+id/header_ll"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_toRightOf="@id/head_icon_sdv"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nickname_tv"
+                        style="@style/Text.Normal.White"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/nickname_margin_top"
+                        android:singleLine="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/balance_margin_top"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/balance_tv"
+                            style="@style/Text.Small.White"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/red_packet_tv"
+                            style="@style/Text.Small.White"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/arrow_drop_up_gray" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_ll"
+                    android:layout_marginTop="@dimen/withdraw_margin_top"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/withdraw_tv"
+                        style="@style/MineButton"
+                        android:layout_marginRight="@dimen/dp_5"
+                        android:text="@string/withdraw_string" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_shopping_tv"
+            style="@style/item_mine_type"
+            android:layout_margin="@dimen/dp_12"
+            android:background="@drawable/shape_mine_item_bg"
+            android:drawableLeft="@drawable/shopping_car_icon"
+            android:text="@string/item_shopping_text"
+            android:textColor="@color/colorOrange"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_12"
+            android:background="@drawable/shape_mine_item_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_vip_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/vip_icon"
+                android:text="@string/item_vip_text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_review_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/review_icon"
+                android:text="@string/item_review_string" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_income_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/income_icon"
+                android:text="@string/item_income_record" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_withdraw_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/wallet_icon"
+                android:text="@string/item_withdraw_text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_strategy_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/strategy_icon"
+                android:text="@string/item_strategy_text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_64">
+
+                <TextView
+                    android:id="@+id/item_permissions_tv"
+                    style="@style/item_mine_type"
+                    android:drawableLeft="@drawable/permissions_icon"
+                    android:text="@string/item_permissions_text" />
+
+                <ImageView
+                    android:id="@+id/permission_warming_iv"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_28"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_23"
+                    android:background="@drawable/permissions_point_icon" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_agreement_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/agreement_icon"
+                android:text="@string/item_agreement_text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_64">
+
+                <TextView
+                    android:id="@+id/item_code_tv"
+                    style="@style/item_mine_type"
+                    android:drawableLeft="@drawable/code_ic"
+                    android:text="@string/item_code_text" />
+
+                <TextView
+                    android:id="@+id/code_go_tv"
+                    style="@style/Text.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_28"
+                    android:text="@string/already_study_string" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_64">
+
+                <TextView
+                    android:id="@+id/item_help_tv"
+                    style="@style/item_mine_type"
+                    android:drawableLeft="@drawable/help_icon"
+                    android:text="@string/item_help_text" />
+
+                <ImageView
+                    android:id="@+id/unread_iv"
+                    android:layout_width="@dimen/service_tips_size"
+                    android:layout_height="@dimen/service_tips_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_28"
+                    android:background="@drawable/shape_unread_tips_bg"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/line_thin"
+                android:background="@color/mine_item_driver_color" />
+
+            <TextView
+                android:id="@+id/item_update_tv"
+                style="@style/item_mine_type"
+                android:drawableLeft="@drawable/check_update_icon"
+                android:text="@string/item_help_update" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/version_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_version_margin"
+            android:layout_marginTop="@dimen/dp_12"
+            android:gravity="center_horizontal"
+            android:textColor="@color/color_ffb6b6b6"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</ScrollView>

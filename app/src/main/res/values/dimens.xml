@@ -9,4 +9,38 @@
     <dimen name="f8">23sp</dimen>
     <dimen name="f9">26sp</dimen>
     <dimen name="f10">18sp</dimen>
+    <dimen name="sp_13">13.0sp</dimen>
+
+    <dimen name="dp_20">20.0dip</dimen>
+    <dimen name="nickname_margin_top">4.0dip</dimen>
+    <dimen name="balance_margin_top">6.0dip</dimen>
+
+    <dimen name="header_background_height">204.0dip</dimen>
+    <dimen name="withdraw_margin_top">15.0dip</dimen>
+    <dimen name="dp_5">5.0dip</dimen>
+    <dimen name="line_thin">1.0dip</dimen>
+    <dimen name="dp_2">2.0dip</dimen>
+    <dimen name="dp_6">6.0dip</dimen>
+    <dimen name="dp_11">11.0dip</dimen>
+    <dimen name="dp_12">12.0dip</dimen>
+    <dimen name="dp_64">64.0dip</dimen>
+    <dimen name="dp_23">23.0dip</dimen>
+    <dimen name="dp_28">28.0dip</dimen>
+    <dimen name="dp_50">50.0dip</dimen>
+    <dimen name="dp_106">106.0dip</dimen>
+
+    <dimen name="service_tips_size">10.0dip</dimen>
+    <dimen name="item_version_margin">24.0dip</dimen>
+    <dimen name="sp_12">12.0sp</dimen>
+    <dimen name="font_normal">16.0dip</dimen>
+    <dimen name="font_small">14.0dip</dimen>
+    <dimen name="withdraw_padding_left">21.0dip</dimen>
+    <dimen name="dp_16">16.0dip</dimen>
+    <dimen name="smartisan_common_corners">6.0dip</dimen>
+    <dimen name="header_icon_size">90.0dip</dimen>
+    <dimen name="dp_22">22.0dip</dimen>
+
+
+    <dimen name="font_micro">12.0dip</dimen>
+    <dimen name="item_check_permission_margin">12.0dip</dimen>
 </resources>

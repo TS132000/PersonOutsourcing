@@ -13,6 +13,7 @@ import com.genimous.core.widget.DialogMaker;
 import com.genimous.peopleoutsourcing.contract.LoginContract;
 import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
 import com.genimous.peopleoutsourcing.presenter.LoginPresenter;
+import com.genimous.peopleoutsourcing.utils.AppUser;
 
 /**
  * Created by wudi on 18/1/11.
@@ -35,6 +36,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         TV_captcha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showLoading("正在获取验证码，请稍后......");
                 mPresenter.getVerificationCode(ET_phone.getText().toString());
             }
         });
@@ -51,17 +53,18 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void loginSuccess(UserInfoEntity infoEntity) {
-
+        hideLoading();
     }
 
     @Override
     public void loginFailed(String msg) {
+        hideLoading();
         ToastUtil.show(msg);
     }
 
     @Override
-    public void showLoading() {
-        DialogMaker.showProgressDialog(this,"正在登录......",false);
+    public void showLoading(String loadStr) {
+        DialogMaker.showProgressDialog(this,loadStr,false);
     }
 
     @Override
@@ -71,7 +74,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void VerificationCodeSuccess() {
-
+        AppUser.login(new UserInfoEntity());
+        hideLoading();
     }
 
     @Override
@@ -86,10 +90,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected int getLayoutResource() {
-        Log.i("aaa","getLayoutResource");
         return R.layout.activity_login;
     }
-
 
 
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/open_permissions_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/open_tips_tv"
+            style="@style/Text.Micro.FFGray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_check_permission_margin"
+            android:layout_marginRight="@dimen/item_check_permission_margin"
+            android:layout_marginTop="@dimen/item_check_permission_margin"
+            android:text="@string/permissions_already_open_string" />
+
+        <TextView
+            android:id="@+id/permission_name_tv"
+            style="@style/Text.Micro.FFGray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_6" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fail_permission_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_106"
+        android:layout_marginBottom="@dimen/dp_2"
+        android:layout_marginLeft="@dimen/item_check_permission_margin"
+        android:layout_marginRight="@dimen/item_check_permission_margin"
+        android:layout_marginTop="@dimen/item_check_permission_margin"
+        android:background="@drawable/shape_submit_image_bg">
+
+        <TextView
+            android:id="@+id/open_permission_tv"
+            style="@style/Text.Micro.Orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dp_11"
+            android:layout_marginRight="@dimen/dp_16"
+            android:text="@string/permissions_open_string" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="@dimen/dp_16"
+            android:layout_toLeftOf="@id/open_permission_tv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fail_permission_tv"
+                style="@style/Text.Normal.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/fail_desc_permission_tv"
+                style="@style/Text.Micro.FFGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -24,4 +24,70 @@
     <string name="login_get_identifying_code">获取验证码</string>
     <string name="login_desc">登录即表示您同意</string>
     <string name="login_agreement">&#060;龙猫服务协议&#062;</string>
+
+
+    <string name="item_help_update">检查更新</string>
+    <string name="item_help_text">联系客服</string>
+    <string name="already_study_string">已完成</string>
+    <string name="item_code_text">输入邀请码</string>
+    <string name="item_agreement_text">用户协议</string>
+    <string name="item_permissions_text">权限检查</string>
+    <string name="item_strategy_text">赚钱攻略</string>
+    <string name="item_income_record">收入记录</string>
+    <string name="item_withdraw_text">提现记录</string>
+    <string name="item_review_string">审核管理</string>
+    <string name="item_vip_text">申请成为VIP</string>
+    <string name="item_shopping_text">福利第一弹：全淘宝购物最高享5折优惠</string>
+    <string name="withdraw_string">提现</string>
+
+
+    <string name="overlay_window_permission_open_string">已完成权限检查</string>
+    <string name="permission_camera_tips">请打开相机权限,以完成拍照任务哦</string>
+    <string name="permission_contacts_tips">请允许龙猫获取手机通讯录</string>
+    <string name="permission_tips_string">"请给龙猫以下权限,才能正常录像哦
+1.相机权限
+2.麦克风权限"</string>
+    <string name="permissions_all_open_string">权限已全开</string>
+    <string name="permissions_already_open_string">已开启权限：</string>
+    <string name="permissions_fail_tips_string">很多任务都是要开启对应权限后才能做哟</string>
+    <string name="permissions_open_string">去开启</string>
+    <string name="permissions_some_fail_string">发现 %1$s 个权限未开启</string>
+    <string name="request_permission_audio">录音需要获取读写权限以及录音权限，请允许龙猫获取以上的权限哦</string>
+    <string name="request_permission_audio_content">"龙猫正常奖钱需要权限:
+
+1.录音权限;
+2.读写手机存储。
+
+请重新打开应用或者去系统设置中允许龙猫获得以上权限哦"</string>
+    <string name="request_permission_camera_denied_photo">权限设置没有完成将无法正常提交任务，请重新设置龙猫权限</string>
+    <string name="request_permission_camera_photo">上传任务需要获取位置权限、访问图库的权限以及摄像头权限，请允许龙猫获取以上的权限哦</string>
+    <string name="request_permission_denied_content">"龙猫正常奖钱需要权限:
+1.读取手机状态;
+2 .读写手机存储。
+
+请重新打开应用或者去系统设置中允许龙猫获得以上权限哦"</string>
+    <string name="request_permission_platinum_denied_content">获取数据需要读取手机状态，请重新打开应用或者去系统设置中允许龙猫获得以上权限哦</string>
+    <string name="request_permission_platinum_retry_content">获取数据需要读取手机状态，请允许龙猫获得以上权限哦</string>
+    <string name="request_permission_retry_button">重新获取权限</string>
+    <string name="request_permission_retry_content">"龙猫正常奖钱需要权限:
+
+1.读取手机状态;
+2.读写手机存储。
+
+请允许龙猫获得以上权限哦"</string>
+    <string name="request_permission_save_image">保存图片需要读写权限，请允许龙猫获取此权限</string>
+
+    <string name="tt_download_permission_denied">您已禁止使用存储权限，请授权后再下载</string>
+    <string name="tt_download_permission_for_delete_denied">您已禁止使用存储权限，请授权后再删除</string>
+    <string name="tt_request_permission_descript_external_storage">存储</string>
+    <string name="tt_request_permission_descript_location">位置信息</string>
+    <string name="tt_request_permission_descript_read_phone_state">拨打电话</string>
+    <string name="waiting_for_check_permission_string">正在检查权限</string>
+    <string name="ysf_no_permission_audio_error">消息未下载完毕或者消息错误！</string>
+    <string name="ysf_no_permission_camera">没有权限，无法拍照！</string>
+    <string name="ysf_no_permission_photo">没有权限，无法打开相册！</string>
+    <string name="ysf_no_permission_save_image">没有权限，无法保存图片！</string>
+    <string name="ysf_no_permission_send_audio">没有权限，无法发送语音！</string>
+
+
 </resources>

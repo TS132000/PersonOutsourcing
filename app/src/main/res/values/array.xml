@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="permissions_fail_desc_string">
+        <item>开启后才可做录音的特工任务</item>
+        <item>开启后才可做拍照的特工任务</item>
+        <item>开启后才可做试玩任务</item>
+        <item>开启后才可做定位的特工任务</item>
+        <item>开启后试玩任务才能正确显示剩余时间</item>
+        <item>开启后才可做试玩任务</item>
+        <item>开启后才可存储照片以及录音文件</item>
+        <item>开启后才可做试玩任务</item>
+    </string-array>
+    <string-array name="permissions_fail_string">
+        <item>麦克风权限未开启</item>
+        <item>相机权限未开启</item>
+        <item>电话权限未开启</item>
+        <item>定位权限未开启</item>
+        <item>在其他应用上显示(悬浮窗)权限未开启</item>
+        <item>查看使用情况权限未开启</item>
+        <item>存储权限未开启</item>
+        <item>修改系统设置权限未开启</item>
+    </string-array>
+    <string-array name="permissions_string">
+        <item>麦克风权限</item>
+        <item>相机权限</item>
+        <item>电话权限</item>
+        <item>定位权限</item>
+        <item>在其他应用上显示(悬浮窗)权限</item>
+        <item>查看使用情况</item>
+        <item>存储权限</item>
+        <item>修改系统设置</item>
+    </string-array>
+    <string-array name="permissions_action_string">
+        <item>android.permission.RECORD_AUDIO</item>
+        <item>android.permission.CAMERA</item>
+        <item>android.permission.READ_PHONE_STATE</item>
+        <item>android.permission.ACCESS_FINE_LOCATION</item>
+        <item>android.settings.action.MANAGE_OVERLAY_PERMISSION</item>
+        <item>android.settings.USAGE_ACCESS_SETTINGS</item>
+        <item>android.permission.WRITE_EXTERNAL_STORAGE</item>
+        <item>android.settings.action.MANAGE_WRITE_SETTINGS</item>
+    </string-array>
+
+</resources>

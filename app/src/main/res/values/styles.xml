@@ -21,4 +21,63 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <style name="TV_UserName">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/f2</item>
+    </style>
+
+    <style name="TV_UserMoney">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/f3</item>
+    </style>
+
+    <style name="Text" />
+    <style name="Text.Normal" parent="@style/Text">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+    <style name="Text.Normal.White" parent="@style/Text.Normal">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.Small" parent="@style/Text">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+    <style name="Text.Small.White" parent="@style/Text.Small">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.Normal.Orange" parent="@style/Text.Normal">
+        <item name="android:textColor">@color/colorOrange</item>
+    </style>
+    <style name="MineButton" parent="@style/Text.Normal.Orange">
+        <item name="android:background">@drawable/shape_bg_withdraw_white</item>
+        <item name="android:paddingLeft">@dimen/withdraw_padding_left</item>
+        <item name="android:paddingRight">@dimen/withdraw_padding_left</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.Normal.Black" parent="@style/Text.Normal">
+        <item name="android:textColor">@color/common_black_tv_color</item>
+    </style>
+    <style name="item_mine_type" parent="@style/Text.Normal.Black">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/dp_16</item>
+        <item name="android:paddingRight">@dimen/dp_16</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/dp_64</item>
+        <item name="android:drawableRight">@mipmap/arrow_right</item>
+        <item name="android:drawablePadding">@dimen/dp_16</item>
+    </style>
+    <style name="Text.Micro" parent="@style/Text">
+        <item name="android:textSize">@dimen/font_micro</item>
+    </style>
+
+    <style name="Text.Micro.FFGray" parent="@style/Text.Micro">
+        <item name="android:textColor">@color/color_ff727272</item>
+    </style>
+    <style name="Text.Micro.Orange" parent="@style/Text.Micro">
+        <item name="android:textColor">@color/colorOrange</item>
+    </style>
 </resources>

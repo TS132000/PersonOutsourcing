@@ -22,7 +22,7 @@ public interface LoginContract {
 
         void loginFailed(String msg);
 
-        void showLoading();
+        void showLoading(String loadingStr);
 
         void hideLoading();
 

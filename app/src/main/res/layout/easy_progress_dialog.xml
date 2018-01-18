@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <com.stx.core.widget.TipsLoadingView
+        <com.genimous.core.widget.TipsLoadingView
             android:id="@+id/easy_progress_bar"
             android:layout_width="30dp"
             android:layout_height="30dp"
