@@ -11,6 +11,9 @@ import com.genimous.core.base.BaseMvpActivity;
 import com.genimous.core.mvp.IPresenter;
 import com.genimous.core.util.PermissionsUtil;
 import com.genimous.peopleoutsourcing.adapter.PermissionViewHolder;
+import com.genimous.peopleoutsourcing.bean.PermissionBean;
+
+import java.util.ArrayList;
 
 
 /**
@@ -33,6 +36,8 @@ public class PermissionsActivity extends BaseMvpActivity {
     /**为开启权限提示*/
     String [] permissionsFailDescStrArray;
 
+    ArrayList<PermissionBean> permissionList = new ArrayList<PermissionBean>(8);
+
     @Override
     protected IPresenter onLoadPresenter() {
         return null;
@@ -52,8 +57,8 @@ public class PermissionsActivity extends BaseMvpActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         //初始化适配器
-//        permissionViewHolder = new PermissionViewHolder(permissionsStrArray);
-//        recyclerView.setAdapter(permissionViewHolder);
+        permissionViewHolder = new PermissionViewHolder(permissionList, PermissionsActivity.this);
+        recyclerView.setAdapter(permissionViewHolder);
 
 
     }
@@ -63,9 +68,22 @@ public class PermissionsActivity extends BaseMvpActivity {
         permissionsStrArray = getResources().getStringArray(R.array.permissions_string);
         permissionsFailStrArray = getResources().getStringArray(R.array.permissions_fail_string);
         permissionsFailDescStrArray = getResources().getStringArray(R.array.permissions_fail_desc_string);
+        String [] permissions_action_string = getResources().getStringArray(R.array.permissions_action_string);
 
-        PermissionsUtil.isPermissionOpen("android.permission.CAMERA");
-        Log.i("aaa",    "PermissionsUtil.isPermissionOpen(\"android.permission.CAMERA\"); === "+PermissionsUtil.isPermissionOpen("android.permission.CAMERA"));
+        for(int i = 0; i < permissions_action_string.length; i++){
+            PermissionBean bean = new PermissionBean();
+
+            boolean isOpen = PermissionsUtil.isPermissionOpen(permissions_action_string[i]);
+            Log.i("aaa","isOpen === "+isOpen);
+            bean.setOpen(isOpen);
+            bean.setPrrmissionStr(permissionsStrArray[i]);
+            bean.setPermissionFailStr(permissionsFailStrArray[i]);
+            bean.setPermissionFailDesc(permissionsFailDescStrArray[i]);
+            permissionList.add(bean);
+        }
+
+//        PermissionsUtil.isPermissionOpen("android.permission.CAMERA");
+//        Log.i("aaa",    "PermissionsUtil.isPermissionOpen(\"android.permission.CAMERA\"); === "+PermissionsUtil.isPermissionOpen("android.permission.CAMERA"));
     }
 
 }

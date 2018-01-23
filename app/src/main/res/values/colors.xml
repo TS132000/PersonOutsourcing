@@ -348,4 +348,6 @@
     <color name="textSub">#7e7e7e</color>
     <color name="textHint">#aaaaaa</color>
 
+    <color name="bg_alpha_30">#4D000000</color>
+
 </resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="xiaomi_app_id">2882303761517630930</string>
+    <string name="xiaomi_app_key">5851763053930</string>
+
+    <string name="mob_appkey">22d055d43c09a</string>
+    <string name="mob_appsecret">bd428841e9b35b776fe11ea90d1bba98</string>
+    <string name="tencent_appkey">tencent1106424183</string>
+</resources>

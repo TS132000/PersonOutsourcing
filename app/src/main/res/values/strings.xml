@@ -90,4 +90,6 @@
     <string name="ysf_no_permission_send_audio">没有权限，无法发送语音！</string>
 
 
+    <string name="no_wechat">未安装微信</string>
+    <string name="no_sina_weibo">未安装新浪微博</string>
 </resources>

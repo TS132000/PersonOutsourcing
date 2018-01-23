@@ -156,10 +156,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
             this.data = data;
         }
 
-
-
-
-
     }
 
     public static class CaptchaEntity {
@@ -172,7 +168,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
         }
 
     }
-
 
 
     public static class LoginContentEntity {

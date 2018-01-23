@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.genimous.core.base.BaseApplication;
 import com.genimous.peopleoutsourcing.utils.AppUser;
+import com.mob.MobSDK;
 
 /**
  * Created by wudi on 18/1/12.
@@ -21,6 +22,7 @@ public class MyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        MobSDK.init(this);
         //初始化Toast
         ToastManager.instance.init(this);
         //初始化用户数据

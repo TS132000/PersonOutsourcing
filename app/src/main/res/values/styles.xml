@@ -80,4 +80,9 @@
     <style name="Text.Micro.Orange" parent="@style/Text.Micro">
         <item name="android:textColor">@color/colorOrange</item>
     </style>
+
+    <style name="popupWindowAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/share_pop_enter</item>
+        <item name="android:windowExitAnimation">@anim/share_pop_exit</item>
+    </style>
 </resources>
