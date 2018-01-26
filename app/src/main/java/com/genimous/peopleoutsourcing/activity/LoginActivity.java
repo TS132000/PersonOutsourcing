@@ -44,7 +44,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         TV_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.toLogin(ET_phone.getText().toString(),ET_captcha.getText().toString());
+                mPresenter.login(ET_phone.getText().toString(),ET_captcha.getText().toString());
             }
         });
 
@@ -53,6 +53,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void loginSuccess(UserInfoEntity infoEntity) {
+        AppUser.login(new UserInfoEntity());
         hideLoading();
     }
 
@@ -74,7 +75,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void VerificationCodeSuccess() {
-        AppUser.login(new UserInfoEntity());
+//        AppUser.login(new UserInfoEntity());
         hideLoading();
     }
 

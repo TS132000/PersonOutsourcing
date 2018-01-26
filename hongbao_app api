@@ -1,0 +1,21 @@
+domain:api.retaozi.com
+
+user:
+/mobile/183********    ＃获取验证码
+/mobile/183********/2374   ＃校验验证码
+/info/183********  #获取用户信息
+／incomerecord／10***  #收入记录
+
+task:
+/list  #获取下载列表
+/record  post   #下载同步
+｛
+user_id: 1000
+app_id:10
+name:应用名称
+status:started/finished  若下载完成则finished(此值同时发放红包,并返回发放成功金额),未完成则started
+｝
+
+
+
+
