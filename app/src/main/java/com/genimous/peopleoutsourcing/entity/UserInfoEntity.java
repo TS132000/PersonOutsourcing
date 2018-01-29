@@ -6,51 +6,83 @@ package com.genimous.peopleoutsourcing.entity;
 
 public class UserInfoEntity {
 
-    String uid;
-    String userName;
-    String gold;
-    String money;
+    String id;
+    String username;
+    String cellphone;
+    String head_url;
 
-    String headImageUrl;
-    public String getUid() {
-        return uid;
+    //支付宝相关
+    String alipay_account;
+    String alipay_name;
+    String create_time;
+
+    //余额
+    String balance;
+
+    public String getId() {
+        return id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getGold() {
-        return gold;
+    public String getCellphone() {
+        return cellphone;
     }
 
-    public void setGold(String gold) {
-        this.gold = gold;
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
     }
 
-    public String getMoney() {
-        return money;
+    public String getHead_url() {
+        return head_url;
     }
 
-    public void setMoney(String money) {
-        this.money = money;
+    public void setHead_url(String head_url) {
+        this.head_url = head_url;
     }
 
-    public String getHeadImageUrl() {
-        return headImageUrl;
+    public String getAlipay_account() {
+        return alipay_account;
     }
 
-    public void setHeadImageUrl(String headImageUrl) {
-        this.headImageUrl = headImageUrl;
+    public void setAlipay_account(String alipay_account) {
+        this.alipay_account = alipay_account;
     }
+
+    public String getAlipay_name() {
+        return alipay_name;
+    }
+
+    public void setAlipay_name(String alipay_name) {
+        this.alipay_name = alipay_name;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
 
 
 

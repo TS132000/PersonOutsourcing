@@ -27,15 +27,15 @@ public class MakeMoneyFragment extends BaseFragment {
 
     private NavigationController navigationController;
 
-    private BaseFragment[] mFragments = new BaseFragment[4];
+    private BaseFragment[] mFragments = new BaseFragment[1];
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         tabLayout = (PageBottomTabLayout)view.findViewById(R.id.PageBottomTabLayout_makeMoneyFragment);
         viewPager = (ViewPager)view.findViewById(R.id.ViewPager_makeMoneyFragment );
         mFragments[0] = SubFastMoney.newInstance(new Bundle());
-        mFragments[1] = SubDataCollectFragment.newInstance(new Bundle());
-        mFragments[2] = SubFastMoney.newInstance(new Bundle());
-        mFragments[3] = SubDataCollectFragment.newInstance(new Bundle());
+//        mFragments[1] = SubDataCollectFragment.newInstance(new Bundle());
+//        mFragments[2] = SubFastMoney.newInstance(new Bundle());
+//        mFragments[3] = SubDataCollectFragment.newInstance(new Bundle());
 //        mFragments[4] = SubFastMoney.newInstance(new Bundle());
 //        mFragments[5] = SubDataCollectFragment.newInstance(new Bundle());
 //        mFragments[6] = SubFastMoney.newInstance(new Bundle());
@@ -73,9 +73,9 @@ public class MakeMoneyFragment extends BaseFragment {
         // 初始化底部Tab
         navigationController = tabLayout.custom()
                 .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"快速赚钱"))
-                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"数据采集"))
-                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"快速赚钱"))
-                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"数据采集"))
+//                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"数据采集"))
+//                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"快速赚钱"))
+//                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"数据采集"))
 //                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"快速赚钱"))
 //                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"数据采集"))
 //                .addItem(buildTabItem(R.drawable.shape_item_text_default, R.drawable.shape_item_text_select,"快速赚钱"))

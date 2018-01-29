@@ -21,4 +21,5 @@ public class NetAPI {
 
     public static final String POST_CAPTCHA_CODE = RELEASE_URL + "mobile";
     public static final String GET_USER_INFO = RELEASE_URL + "info";
+    public static final String GET_TRYGAME_LIST = RELEASE_URL + "list";
 }

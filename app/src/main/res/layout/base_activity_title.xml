@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/action_bar_background_color"
+    tools:context="com.genimous.peopleoutsourcing.activity.MainActivity">
+    <ImageView
+        android:id="@+id/ImageView_baseActivity_back"
+        android:layout_width="@dimen/dp_28"
+        android:layout_height="@dimen/dp_28"
+        android:layout_centerVertical="true"
+        android:src="@drawable/media_video_back_iv"
+        />
+    <TextView
+        android:id="@+id/TextVuew_baseFragmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_centerInParent="true"
+        android:text="Title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+
+
+
+</RelativeLayout>

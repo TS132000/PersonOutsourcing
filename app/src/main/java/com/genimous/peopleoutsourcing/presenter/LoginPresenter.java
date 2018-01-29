@@ -37,7 +37,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
         toLogin(mobileNum, captcha);
     }
 
-    public void toLogin(String mobileNum, final String captcha) {
+    public void toLogin(final String mobileNum, final String captcha) {
         //联网
 
         //联网
@@ -53,7 +53,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Log.i("aaa", "id ==== " + id);
                         e.printStackTrace();
 //                            Log.i("aaa", ""+ (e.printStackTrace()));
                         getView().hideLoading();
@@ -63,14 +62,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                     @Override
                     public void onResponse(String response, int id) {
                         getView().hideLoading();
-                        Log.i("aaa", "response = " + response);
                         if (!TextUtils.isEmpty(response)) {
                             CaptchaInfoEntity captchaInfoEntity = GsonUtil.newGson().fromJson(response, CaptchaInfoEntity.class);
                             if (captchaInfoEntity.getCode() == NetAPI.SERVER_SUCCESS) {
 
                                 if(captchaInfoEntity.getStatus().equals(NetAPI.HTTP_STATUS_SUCCESS)){
-                                    ToastUtil.show("登录成功");
-                                    getView().loginSuccess();
+//                                    ToastUtil.show("登录成功");
+//                                    getView().loginSuccess();
+                                     getUserInfo(mobileNum);
 
                                 } else {
                                     getView().loginFailed("验证失败");
@@ -90,13 +89,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
     }
 
     // 获取用户信息
-    private void getUserInfo(final String mobileNum){
+    public void getUserInfo(final String mobileNum){
+
         //联网
         OkHttpUtils
                 .get()
 //                    .addParams("type", "login")
-                .url(NetAPI.GET_USER_INFO)
-                .addParams("mobile",  mobileNum)
+                .url(NetAPI.GET_USER_INFO+"/"+mobileNum)
+//                .addParams("mobile",  mobileNum)
 //                    .postString()
 //                    .content(GsonUtil.newGson().toJson(new CaptchaEntity("login", mobileNum)))
                 .build()
@@ -104,7 +104,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.i("aaa", "id ==== " + id);
-
                         getView().hideLoading();
                         getView().loginFailed(e.getMessage());
                     }
@@ -114,26 +113,17 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                         getView().hideLoading();
                         Log.i("aaa", "response = " + response);
                         if (!TextUtils.isEmpty(response)) {
-                            CaptchaInfoEntity captchaInfoEntity = GsonUtil.newGson().fromJson(response, CaptchaInfoEntity.class);
-                            if (captchaInfoEntity.getCode() == NetAPI.SERVER_SUCCESS) {
-                                getView().hideLoading();
-                                if(captchaInfoEntity.getStatus().equals(NetAPI.HTTP_STATUS_SUCCESS)){
-                                    ToastUtil.show("登录成功");
-                                     getUserInfo(mobileNum);
+                            UserInfoEntity userInfoEntity = GsonUtil.newGson().fromJson(response, UserInfoEntity.class);
 
-                                } else {
-                                    getView().loginFailed("验证失败");
-
-                                }
-
+                            if (userInfoEntity != null && userInfoEntity.getId() != null){
+                                getView().loginSuccess(userInfoEntity);
                             } else {
-                                getView().hideLoading();
-                                getView().loginFailed(captchaInfoEntity.getMsg());
+                                getView().loginFailed("用户信息获取失败");
                             }
+                        } else {
+                            getView().loginFailed("用户信息获取失败");
                         }
                     }
-
-
                 });
     }
 
@@ -144,15 +134,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
 
     // 获取签证码
     public void getVerificationCode(String mobileNum) {
-        Log.i("aaa", "mobileNum ====  " + mobileNum);
-//        ToastUtil.show("请填写正确的手机号码");
+
         if (isMobile(mobileNum)) {
-
-
-//            CaptchaEntity entity  = new CaptchaEntity("login", mobileNum);
-            Log.i("aaa",    "entity === "+NetAPI.POST_CAPTCHA_CODE);
-
-
             //联网
             OkHttpUtils
                     .post()
@@ -188,14 +171,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                                 }
                             }
                         }
-
-
                     });
 
         } else {
             ToastUtil.show("请填写正确的手机号码");
         }
-
 
     }
 

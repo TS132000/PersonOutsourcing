@@ -53,7 +53,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void loginSuccess(UserInfoEntity infoEntity) {
-        AppUser.login(new UserInfoEntity());
+        AppUser.login(infoEntity);
         hideLoading();
     }
 

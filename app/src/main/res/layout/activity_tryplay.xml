@@ -6,16 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.genimous.peopleoutsourcing.activity.MainActivity">
 
+
+    <include
+        android:id="@+id/tryplayTitle"
+        layout="@layout/base_activity_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView_fastMoneyFragment"
+        android:layout_below="@id/tryplayTitle"
+        android:id="@+id/recyclerView_tryplayActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.genimous.peopleoutsourcing.widget.LoadStatusView
-        android:id="@+id/LoadStatusView_Discover_status"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@color/black" />
 
 </RelativeLayout>

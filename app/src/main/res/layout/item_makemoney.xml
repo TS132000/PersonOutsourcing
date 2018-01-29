@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_106"
+    android:layout_centerInParent="true"
+    android:background="@drawable/material_item_background">
+
+    <ImageView
+        android:id="@+id/ImageView_ItemMakeMoney_icon"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon"/>
+
+    <TextView
+        android:id="@+id/TextView_ItemMakeMoney_button"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:text="马上进入"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        style="@style/Text.Micro.Orange"
+        android:layout_marginRight="@dimen/dp_16"
+        android:textSize="@dimen/f6" />
+
+
+
+    <TextView
+        android:id="@+id/TextView_ItemMakeMoney_title"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_alignTop="@id/ImageView_ItemMakeMoney_icon"
+        android:layout_toRightOf="@id/ImageView_ItemMakeMoney_icon"
+        android:layout_gravity="center"
+        android:text="试玩应用"
+        style="@style/Text.Normal.Black"
+
+        android:textSize="@dimen/f1" />
+    <TextView
+        android:id="@+id/TextView_ItemMakeMoney_info"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextView_ItemMakeMoney_title"
+        android:layout_alignLeft="@id/TextView_ItemMakeMoney_title"
+        android:text="下载打开体验即可，每次奖励0.1元,多做多得长期有效"
+        style="@style/Text.Normal.Black"
+        android:layout_marginRight="@dimen/dp_106"
+
+        android:layout_gravity="center"
+        android:textSize="@dimen/f6" />
+</RelativeLayout>
