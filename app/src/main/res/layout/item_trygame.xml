@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_64"
+    android:layout_centerInParent="true"
+    android:background="@drawable/material_item_background">
+
+    <ImageView
+        android:id="@+id/ImageView_ItemTryGame_icon"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_width="@dimen/dp_28"
+        android:layout_height="@dimen/dp_28"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon"/>
+
+    <TextView
+        android:id="@+id/TextView_ItemTryGame_button"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:text="下载"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        style="@style/Text.Micro.Orange"
+        android:layout_marginRight="@dimen/dp_16"
+        android:textSize="@dimen/f6" />
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_16"
+    android:layout_toRightOf="@id/ImageView_ItemTryGame_icon"
+    android:layout_centerVertical="true"
+    android:layout_marginRight="@dimen/dp_106"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/TextView_ItemTryGame_title"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="试玩应用"
+        style="@style/Text.Normal.Black"
+        android:textSize="@dimen/f5" />
+    <TextView
+        android:id="@+id/TextView_ItemTryGame_info"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="本次打开 ＋0.1元
+之后去［每日签到］还能继续赚钱"
+        style="@style/Text.Normal.Black"
+
+        android:layout_gravity="center"
+        android:textSize="@dimen/f6" />
+</LinearLayout>
+</RelativeLayout>

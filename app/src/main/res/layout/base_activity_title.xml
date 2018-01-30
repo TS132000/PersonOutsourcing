@@ -15,7 +15,7 @@
         android:src="@drawable/media_video_back_iv"
         />
     <TextView
-        android:id="@+id/TextVuew_baseFragmentTitle"
+        android:id="@+id/TextView_baseFragmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

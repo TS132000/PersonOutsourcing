@@ -47,5 +47,4 @@ public class TryGameBean {
         this.downUrl = downUrl;
     }
 
-
 }

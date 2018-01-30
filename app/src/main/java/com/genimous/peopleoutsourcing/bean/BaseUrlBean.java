@@ -4,13 +4,13 @@ package com.genimous.peopleoutsourcing.bean;
  * Created by wudi on 18/1/29.
  */
 
-public class BaseUrlBean {
+public class BaseUrlBean <T> {
 
     int code;
 
     String status;
 
-    String msg;
+    T msg;
 
     public int getCode() {
         return code;
@@ -28,11 +28,11 @@ public class BaseUrlBean {
         this.status = status;
     }
 
-    public String getMsg() {
+    public T getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public void setMsg(T msg) {
         this.msg = msg;
     }
 
