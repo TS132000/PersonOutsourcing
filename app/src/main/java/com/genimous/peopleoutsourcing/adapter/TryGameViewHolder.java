@@ -23,11 +23,13 @@ import java.util.ArrayList;
 public class TryGameViewHolder extends RecyclerView.Adapter<TryGameViewHolder.MyViewHolder> {
 
     ArrayList<TryGameBean> tbeanList;
+    OnRecyclerViewItemClickListener listener;
 
     Context context;
-    public TryGameViewHolder(ArrayList<TryGameBean> tbeanList, Context context){
+    public TryGameViewHolder(ArrayList<TryGameBean> tbeanList, Context context,OnRecyclerViewItemClickListener listener){
         this.tbeanList = tbeanList;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -54,6 +56,7 @@ public class TryGameViewHolder extends RecyclerView.Adapter<TryGameViewHolder.My
             @Override
             public void onClick(View view) {
                 Log.i("aaa","download = "+tbeanList.get(position).getDownUrl());
+                listener.onItemClick(position);
             }
         });
     }
@@ -79,5 +82,8 @@ public class TryGameViewHolder extends RecyclerView.Adapter<TryGameViewHolder.My
         }
     }
 
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(int position);
+    }
 
 }

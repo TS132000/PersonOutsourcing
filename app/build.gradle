@@ -42,6 +42,8 @@ dependencies {
     compile 'me.yokeyword:fragmentation:1.1.9'
     compile 'me.yokeyword:fragmentation-swipeback:1.1.9'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'de.greenrobot:greendao:2.1.0'
+    compile 'de.greenrobot:greendao-generator:2.1.0'
     //okhttp
     compile 'com.zhy:okhttputils:2.6.2'
 

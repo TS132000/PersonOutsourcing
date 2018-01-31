@@ -23,7 +23,7 @@ public interface TryGameContract {
 
         void getGameSuccess(ArrayList<TryGameBean> gameList);
 
-        void lgetGameFailed(String msg);
+        void getGameFailed(String msg);
 
         void showLoading(String loadingStr);
 

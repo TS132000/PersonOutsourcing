@@ -40,7 +40,7 @@ public class TryGamePresenter extends BasePresenter<TryGameContract.tryGameView,
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         getView().hideLoading();
-                        getView().lgetGameFailed(e.getMessage());
+                        getView().getGameFailed(e.getMessage());
                     }
 
                     @Override
@@ -52,7 +52,7 @@ public class TryGamePresenter extends BasePresenter<TryGameContract.tryGameView,
                                 ArrayList<TryGameBean> list = captchaInfoEntity.getMsg();
                                 getView().getGameSuccess(list);
                             } else {
-                                getView().lgetGameFailed("获取失败");
+                                getView().getGameFailed("获取失败");
                             }
                         }
                     }
