@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.genimous.peopleoutsourcing.activity.PermissionsActivity;
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.activity.TryPlayActivity;
 import com.genimous.peopleoutsourcing.adapter.FastMoneyViewHolder;
 import com.genimous.peopleoutsourcing.adapter.PermissionViewHolder;

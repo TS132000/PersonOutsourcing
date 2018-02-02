@@ -7,8 +7,10 @@ import com.genimous.core.mvp.BasePresenter;
 import com.genimous.core.util.GsonUtil;
 import com.genimous.core.util.ToastUtil;
 import com.genimous.net.NetAPI;
+import com.genimous.peopleoutsourcing.bean.BaseUrlBean;
 import com.genimous.peopleoutsourcing.contract.LoginContract;
 import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
+import com.google.gson.reflect.TypeToken;import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -112,9 +114,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.loginView, Login
                     public void onResponse(String response, int id) {
                         getView().hideLoading();
                         Log.i("aaa", "response = " + response);
-                        if (!TextUtils.isEmpty(response)) {
-                            UserInfoEntity userInfoEntity = GsonUtil.newGson().fromJson(response, UserInfoEntity.class);
+                            if (!TextUtils.isEmpty(response)) {
+                            BaseUrlBean<UserInfoEntity> entity =
+                                    GsonUtil.newGson().fromJson(response, new TypeToken<BaseUrlBean<UserInfoEntity>>(){}.getType());
 
+                            UserInfoEntity userInfoEntity = entity.getMsg();
                             if (userInfoEntity != null && userInfoEntity.getId() != null){
                                 getView().loginSuccess(userInfoEntity);
                             } else {

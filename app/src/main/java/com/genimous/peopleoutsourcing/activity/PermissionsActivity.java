@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.Resource;
 import com.genimous.core.base.BaseMvpActivity;
 import com.genimous.core.mvp.IPresenter;
 import com.genimous.core.util.PermissionsUtil;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.adapter.PermissionViewHolder;
 import com.genimous.peopleoutsourcing.bean.PermissionBean;
 

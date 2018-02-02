@@ -1,5 +1,6 @@
 package com.genimous.peopleoutsourcing.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.genimous.core.base.BaseMvpActivity;
 import com.genimous.core.util.ToastUtil;
 import com.genimous.core.widget.DialogMaker;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.contract.LoginContract;
 import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
 import com.genimous.peopleoutsourcing.presenter.LoginPresenter;
@@ -55,6 +57,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     public void loginSuccess(UserInfoEntity infoEntity) {
         AppUser.login(infoEntity);
         hideLoading();
+        Intent in = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(in);
+        finish();
     }
 
     @Override

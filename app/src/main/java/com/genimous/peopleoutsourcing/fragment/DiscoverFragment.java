@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
 import com.genimous.peopleoutsourcing.view.IconTitleItemView;
 import com.genimous.peopleoutsourcing.view.TextTitleItemView;

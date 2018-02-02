@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.genimous.core.base.BaseApplication;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.utils.AppUser;
 import com.mob.MobSDK;
 

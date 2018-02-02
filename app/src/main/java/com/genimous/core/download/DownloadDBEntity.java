@@ -14,6 +14,10 @@ public class DownloadDBEntity {
     private String fileName;
     private Integer downloadStatus;
 
+
+
+    private String packageName;
+
     public DownloadDBEntity() {
     }
 
@@ -31,10 +35,11 @@ public class DownloadDBEntity {
                 ", saveDirPath='" + saveDirPath + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", downloadStatus=" + downloadStatus +
+                ", packageName = " +packageName+
                 '}';
     }
 
-    public DownloadDBEntity(String downloadId, Long toolSize, Long completedSize, String url, String saveDirPath, String fileName, Integer downloadStatus) {
+    public DownloadDBEntity(String downloadId, Long toolSize, Long completedSize, String url, String saveDirPath, String fileName, Integer downloadStatus, String packageName) {
         this.downloadId = downloadId;
         this.toolSize = toolSize;
         this.completedSize = completedSize;
@@ -42,6 +47,7 @@ public class DownloadDBEntity {
         this.saveDirPath = saveDirPath;
         this.fileName = fileName;
         this.downloadStatus = downloadStatus;
+        this.packageName = packageName;
     }
 
     public String getDownloadId() {
@@ -100,4 +106,11 @@ public class DownloadDBEntity {
         this.downloadStatus = downloadStatus;
     }
 
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
 }

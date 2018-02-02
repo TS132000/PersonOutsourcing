@@ -3,7 +3,7 @@ package com.genimous.peopleoutsourcing.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
 import com.genimous.peopleoutsourcing.widget.LoadStatusView;
 

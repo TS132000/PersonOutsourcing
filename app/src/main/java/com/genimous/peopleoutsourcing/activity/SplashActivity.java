@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseActivity;
 import com.genimous.peopleoutsourcing.utils.AppUser;
 

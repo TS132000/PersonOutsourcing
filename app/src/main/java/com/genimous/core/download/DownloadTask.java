@@ -39,6 +39,7 @@ public class DownloadTask implements Runnable {
 
     private String fileName;    // File name when saving
 
+    private String packageName;
 
     private List<DownloadTaskListener> listeners = new ArrayList<>();;
 
@@ -69,7 +70,7 @@ public class DownloadTask implements Runnable {
             if(fileLength!=0&&toolSize<=fileLength){
                 downloadStatus = DownloadStatus.DOWNLOAD_STATUS_COMPLETED;
                 toolSize = completedSize = fileLength;
-                dbEntity = new DownloadDBEntity(id, toolSize, toolSize, url, saveDirPath, fileName, downloadStatus);
+                dbEntity = new DownloadDBEntity(id, toolSize, toolSize, url, saveDirPath, fileName, downloadStatus,packageName);
                 downloadDao.insertOrReplace(dbEntity);
                 onCompleted();
                 return;
@@ -106,7 +107,7 @@ public class DownloadTask implements Runnable {
                     int length = 0;
                     int buffOffset = 0;
                     if (dbEntity == null) {
-                        dbEntity = new DownloadDBEntity(id, toolSize, 0L, url, saveDirPath, fileName, downloadStatus);
+                        dbEntity = new DownloadDBEntity(id, toolSize, 0L, url, saveDirPath, fileName, downloadStatus, packageName);
                         downloadDao.insertOrReplace(dbEntity);
                     }
                     while ((length = bis.read(buffer)) > 0 && downloadStatus != DownloadStatus.DOWNLOAD_STATUS_CANCEL &&downloadStatus!=DownloadStatus.DOWNLOAD_STATUS_PAUSE) {
@@ -262,6 +263,13 @@ public class DownloadTask implements Runnable {
         this.fileName = fileName;
     }
 
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName){
+        this.packageName = packageName;
+    }
 
     public void cancel() {
         setDownloadStatus(DownloadStatus.DOWNLOAD_STATUS_CANCEL);
@@ -360,6 +368,7 @@ public class DownloadTask implements Runnable {
         task.setDownloadStatus(entity.getDownloadStatus());
         task.setId(entity.getDownloadId());
         task.setUrl(entity.getUrl());
+        task.setPackageName(entity.getPackageName());
         task.setFileName(entity.getFileName());
         task.setSaveDirPath(entity.getSaveDirPath());
         task.setCompletedSize(entity.getCompletedSize());

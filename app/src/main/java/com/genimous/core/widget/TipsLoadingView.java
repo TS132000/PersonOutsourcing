@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import com.genimous.core.util.ScreenUtil;
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 
 /**
  * 用于显示 Loading 的 {@link View}，支持颜色和大小的设置。

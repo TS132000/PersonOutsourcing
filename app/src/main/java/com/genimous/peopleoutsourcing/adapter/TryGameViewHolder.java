@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.bean.TryGameBean;
 import com.genimous.peopleoutsourcing.bean.TryGameBean;
 

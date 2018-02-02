@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.genimous.peopleoutsourcing.activity.PermissionsActivity;
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
 import com.genimous.peopleoutsourcing.widget.LoadStatusView;
 

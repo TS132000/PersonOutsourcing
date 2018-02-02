@@ -16,7 +16,7 @@ import android.widget.SimpleAdapter;
 
 import com.genimous.core.util.TextUtil;
 import com.genimous.core.util.ToastUtil;
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 
 import java.io.FileOutputStream;
 

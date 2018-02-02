@@ -14,6 +14,7 @@ public class TryGameBean {
 
     String downUrl;
 
+    String packagename;
 
     public String getAppId() {
         return appId;
@@ -47,4 +48,11 @@ public class TryGameBean {
         this.downUrl = downUrl;
     }
 
+    public String getPackagename() {
+        return packagename;
+    }
+
+    public void setPackagename(String packagename) {
+        this.packagename = packagename;
+    }
 }

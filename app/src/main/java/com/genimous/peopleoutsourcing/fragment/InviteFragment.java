@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.genimous.peopleoutsourcing.activity.R;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
 import com.genimous.peopleoutsourcing.view.SharePopupWindow;
 import com.genimous.peopleoutsourcing.widget.LoadStatusView;

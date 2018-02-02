@@ -24,6 +24,7 @@ import com.genimous.core.download.DownloadTask;
 import com.genimous.core.download.DownloadTaskListener;
 import com.genimous.core.util.ToastUtil;
 import com.genimous.core.widget.DialogMaker;
+import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.adapter.TryGameViewHolder;
 import com.genimous.peopleoutsourcing.bean.TryGameBean;
 import com.genimous.peopleoutsourcing.contract.TryGameContract;
@@ -150,7 +151,7 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
     @Override
     public void onItemClick(int position) {
         Log.i("aaa","onItemClickonItemClick");
-        download(tryGameList.get(position).getDownUrl());
+        download(tryGameList.get(position).getDownUrl(), tryGameList.get(position).getPackagename());
     }
 
 
@@ -198,12 +199,14 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
 
     int counter = 1001;
 
-    private void download(String url) {
+    private void download(String url, String packageName) {
 //        tv.setEnabled(false);
         DownloadTask task = new DownloadTask();
         String fileName = MD5.MD5(url);
 
         task.setFileName(fileName);
+        Log.i("aaa", "packageName= "+packageName);
+        task.setPackageName(packageName);
         taskIds.add(fileName);
         task.setId(fileName);
         task.setSaveDirPath(getExternalCacheDir().getPath() + "/");

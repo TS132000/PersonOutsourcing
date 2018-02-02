@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.genimous.peopleoutsourcing.activity">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.genimous.peopleoutsourcing">
 
 
     <application
-        android:name=".MyApplication"
+        android:name=".activity.MyApplication"
+
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,20 +21,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PermissionsActivity"
+            android:name=".activity.PermissionsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TryPlayActivity"
+            android:name=".activity.TryPlayActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <!--shareSDK-->
@@ -62,7 +64,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name=".activity.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -74,7 +76,22 @@
         <meta-data
             android:name="Mob-AppSecret"
             android:value="@string/mob_appsecret" />
+        <service
+            android:name=".service.OpenAppService"
+            android:process=":openApp" >
+        </service>
 
+        <service
+            android:label="@string/accessibility_service_description"
+            android:name="service.WindowChangeDetectingService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice"/>
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
@@ -101,4 +118,10 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     <!--sharesdk-->
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <!--<uses-permission-->
+        <!--android:name="android.permission.PACKAGE_USAGE_STATS"-->
+        <!--tools:ignore="ProtectedPermissions"/>-->
+
+    <!--<permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>-->
+
 </manifest>

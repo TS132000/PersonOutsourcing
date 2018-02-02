@@ -167,7 +167,7 @@ public class DownloadManager {
         task.setHttpClient(client);
         task.addDownloadListener(listener);
         if(getDBTaskById(task.getId())==null){
-            DownloadDBEntity dbEntity = new DownloadDBEntity(task.getId(), task.getToolSize(), task.getCompletedSize(), task.getUrl(), task.getSaveDirPath(), task.getFileName(), task.getDownloadStatus());
+            DownloadDBEntity dbEntity = new DownloadDBEntity(task.getId(), task.getToolSize(), task.getCompletedSize(), task.getUrl(), task.getSaveDirPath(), task.getFileName(), task.getDownloadStatus(),task.getPackageName());
             downloadDao.insertOrReplace(dbEntity);
         }
         Future future =  executorService.submit(task);
@@ -278,6 +278,7 @@ public class DownloadManager {
                     currentList.add(task);
                 }
             }
+
         }else{
             if(list!=null)currentList.addAll(list);
         }
