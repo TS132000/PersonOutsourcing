@@ -169,8 +169,6 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
     }
 
 
-
-
     private void updateNotification(String fileTitle, int progress, long totalBytes, int notifyId) {
 
 
@@ -187,15 +185,12 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
                 .setContentText(content)
                 .setSmallIcon(android.R.drawable.stat_sys_download);
 
-
         mNotificationManager.notify(
                 notifyId,
                 mNotifyBuilder.build());
 
         notificationHashMap.put(notifyId, mNotifyBuilder);
     }
-
-
 
     int counter = 1001;
 

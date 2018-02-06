@@ -83,7 +83,7 @@
 
         <service
             android:label="@string/accessibility_service_description"
-            android:name="service.WindowChangeDetectingService"
+            android:name=".service.WindowChangeDetectingService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService"/>
@@ -118,9 +118,9 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     <!--sharesdk-->
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <!--<uses-permission-->
-        <!--android:name="android.permission.PACKAGE_USAGE_STATS"-->
-        <!--tools:ignore="ProtectedPermissions"/>-->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions"/>
 
     <!--<permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>-->
 

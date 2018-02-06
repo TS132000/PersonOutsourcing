@@ -2,13 +2,37 @@ package com.genimous.peopleoutsourcing.service;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.CountDownTimer;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+
+import com.genimous.core.download.DownloadManager;
+import com.genimous.core.download.DownloadTask;
+import com.genimous.core.util.GsonUtil;
+import com.genimous.net.NetAPI;
+import com.genimous.peopleoutsourcing.R;
+import com.genimous.peopleoutsourcing.activity.MainActivity;
+import com.genimous.peopleoutsourcing.activity.MyApplication;
+import com.genimous.peopleoutsourcing.presenter.LoginPresenter;
+import com.genimous.peopleoutsourcing.utils.AppUser;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * Created by wudi on 18/2/2.
@@ -17,17 +41,27 @@ import android.view.accessibility.AccessibilityEvent;
 public class WindowChangeDetectingService extends AccessibilityService{
 
 
-    private WindowChangeDetectingService mTopWindowManager;
+    private CountDownTimer countDownTimer;
+
+    List<DownloadTask> downloadTaskList;
+    DownloadManager downloadManager;
+    NotificationCompat.Builder notificationBuilder;
+    NotificationManager mNotificationManager;
+    int notifyId ;
+
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if (mTopWindowManager == null) {
-            Log.d("aaa","onStartCommand");
-        }
+    public void onCreate() {
 
-        return super.onStartCommand(intent, flags, startId);
-
+        Log.i("aaa","oncreate");
+        mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        downloadManager = DownloadManager.getInstance(MyApplication.getInstance());
+        new NotificationCompat.Builder(this)
+                .setContentTitle("试玩时间")
+                .setContentText("60秒")
+                .setSmallIcon(android.R.drawable.stat_sys_download);
+        super.onCreate();
     }
-
 
     @Override
     protected void onServiceConnected() {
@@ -44,20 +78,43 @@ public class WindowChangeDetectingService extends AccessibilityService{
 
         setServiceInfo(config);
     }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        Log.d("aaa", "onAccessibilityEvent: " + event.getPackageName());
+//        Log.d("aaa", "onAccessibilityEvent: " + event.getPackageName());
         if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-            Log.i("aaa"," event.getPackageName().toString( === "+ event.getPackageName().toString());
-            ComponentName componentName = new ComponentName(
-                    event.getPackageName().toString(),
-                    event.getClassName().toString()
-            );
+            String packageName = event.getPackageName().toString();
+            Log.i("aaa"," event.getPackageName().toString( === "+ packageName);
+            downloadTaskList = downloadManager.loadAllTask();
+            //是否弹出到试玩界面
+            boolean isTryPlay = false;
+            for (int i = 0; i < downloadTaskList.size(); i++){
+                Log.i("aaa","downloadTaskList.get(i).getPackageName() ==== "
+                        +downloadTaskList.get(i).getPackageName());
 
-            ActivityInfo activityInfo = tryGetActivity(componentName);
-            boolean isActivity = activityInfo != null;
-            if (isActivity)
-                Log.i("CurrentActivity", componentName.flattenToShortString());
+                if (downloadTaskList.get(i).getPackageName().equals(packageName)){
+                    isTryPlay = true;
+                    notifyId = packageName.hashCode();
+                    break;
+                }
+            }
+            if (isTryPlay) {
+                // 弹出试玩
+
+                Log.i("aaa","弹出试玩 ==== ");
+                if (!isFinish)
+                    return;
+//                setNotification("试玩应用","60秒", notifyId);
+                start();
+            }
+//            ComponentName componentName = new ComponentName(
+//                    event.getPackageName().toString(),
+//                    event.getClassName().toString()
+//            );
+//            ActivityInfo activityInfo = tryGetActivity(componentName);
+//            boolean isActivity = activityInfo != null;
+//            if (isActivity)
+//                Log.i("CurrentActivity", componentName.flattenToShortString());
         }
 
     }
@@ -73,4 +130,91 @@ public class WindowChangeDetectingService extends AccessibilityService{
     public void onInterrupt() {
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void setNotification(String title, String content, int notifyId) {
+        Intent hangIntent = new Intent();
+        hangIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent hangPendingIntent = PendingIntent.getActivity(this, 0, hangIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+
+        Notification.Builder mNotifyBuilder = new Notification.Builder(this);
+         mNotifyBuilder.setContentTitle(title)
+                .setContentText(content)
+                .setFullScreenIntent(hangPendingIntent, true)
+                .setSmallIcon(android.R.drawable.stat_sys_download);
+
+        mNotificationManager.notify(
+                notifyId,
+                mNotifyBuilder.build());
+
+//        notificationHashMap.put(notifyId, mNotifyBuilder);
+    }
+
+    int countDownSeconds = 60;
+    boolean isFinish = true;
+    private void start(){
+        isFinish = false;
+        countDownTimer = new CountDownTimer(countDownSeconds * 1000, 1000) {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                setNotification("试玩应用",millisUntilFinished / 1000 + "秒", notifyId);
+            }
+
+            @Override
+            public void onFinish() {
+                isFinish = true;
+                mNotificationManager.cancel(notifyId);
+            }
+        };
+        countDownTimer.start();
+    }
+    public void toLogin(final String mobileNum, final String captcha) {
+        //联网
+
+        //联网
+        OkHttpUtils
+                .post()
+//                    .addParams("type", "login")
+                .url(NetAPI.GET_RECORD_LIST)
+                .addParams("user_id", AppUser.getUserInfoEntity().getId())
+                .addParams("app_id", captcha)
+//                    .postString()
+//                    .content(GsonUtil.newGson().toJson(new CaptchaEntity("login", mobileNum)))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+//                            Log.i("aaa", ""+ (e.printStackTrace()));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            LoginPresenter.CaptchaInfoEntity captchaInfoEntity = GsonUtil.newGson().fromJson(response, LoginPresenter.CaptchaInfoEntity.class);
+                            if (captchaInfoEntity.getCode() == NetAPI.SERVER_SUCCESS) {
+
+                                if (captchaInfoEntity.getStatus().equals(NetAPI.HTTP_STATUS_SUCCESS)) {
+//                                    ToastUtil.show("登录成功");
+//                                    getView().loginSuccess();
+
+                                } else {
+//                                    getView().loginFailed("验证失败");
+//                                    getView().hideLoading();
+                                }
+
+                            } else {
+//                                getView().hideLoading();
+//                                getView().loginFailed(captchaInfoEntity.getMsg());
+                            }
+                        }
+                    }
+
+
+                });
+    }
+
 }

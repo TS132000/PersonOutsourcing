@@ -8,9 +8,11 @@ import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.genimous.core.util.DeviceUtil;
+import com.genimous.core.util.PermissionsUtil;
 import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseActivity;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
@@ -22,6 +24,8 @@ import com.genimous.peopleoutsourcing.service.OpenAppService;
 import com.genimous.peopleoutsourcing.service.WindowChangeDetectingService;
 import com.genimous.peopleoutsourcing.view.IconTitleItemView;
 
+import java.util.ArrayList;
+
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageBottomTabLayout;
 import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
@@ -31,7 +35,6 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 public class MainActivity extends BaseActivity {
 
     PageBottomTabLayout tabLayout;
-    private static final int REQUEST_CODE = 1;
     ViewPager viewPager;
     private NavigationController navigationController;
 
@@ -44,13 +47,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkVersion();
-
-        if (checkAccessibility()) {
-            startService(new Intent(MainActivity.this,WindowChangeDetectingService.class));
+        //检测用户是否打开权限
+        PermissionsUtil.checkVersion(this);
+        if(PermissionsUtil.checkAccessibility(this)){
+            startWindowChangeDetectingService();
         }
-//        Intent intent = new Intent(this, OpenAppService.class);
-//        startService(intent);
 
         tabLayout = (PageBottomTabLayout)findViewById(R.id.PageBottomTabLayout_mainActivity);
         viewPager = (ViewPager)findViewById(R.id.ViewPager_mainActivity);
@@ -58,60 +59,13 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public boolean checkAccessibility() {
-        // 判断辅助功能是否开启
-        if (!isAccessibilitySettingsOn()) {
-            // 引导至辅助功能设置页面
-            startActivity(
-                    new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
-                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            );
-            Toast.makeText(MainActivity.this, "请先开启 \"TopActivity\" 的辅助功能", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        return true;
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        Log.i("aaa","startActivityForResult requestCode == "+requestCode);
+
     }
 
-    /**
-     * @return
-     * 判断是否开启辅助功能
-     */
-    private boolean isAccessibilitySettingsOn() {
-        int accessibilityEnabled = 0;
-        try {
-            accessibilityEnabled = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        if (accessibilityEnabled == 1) {
-            String services = Settings.Secure.getString(getContentResolver(),
-                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
-            if (services != null) {
-                return services.toLowerCase().contains(getPackageName().toLowerCase());
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * 检测Android版本是否需要开启权限
-     */
-    private void checkVersion() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(!Settings.canDrawOverlays(this)) {
-//                mCheckBox.setChecked(false);
-                startActivityForResult(
-                        new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()))
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
-                        REQUEST_CODE
-                );
-            }
-
-        }
-    }
 
     private void initView() {
 
@@ -191,7 +145,15 @@ public class MainActivity extends BaseActivity {
                         new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
                         DeviceUtil.MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS);
             }
+        } else if (requestCode == PermissionsUtil.PERMISSIONSUTIL_REQUEST_CODE){
+            //打开试玩
+            startWindowChangeDetectingService();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void startWindowChangeDetectingService(){
+        Intent intent = new Intent(this, WindowChangeDetectingService.class);
+        startService(intent);
     }
 }

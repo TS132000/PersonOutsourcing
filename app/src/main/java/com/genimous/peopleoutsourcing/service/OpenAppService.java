@@ -20,6 +20,7 @@ import com.genimous.core.util.DeviceUtil;
 import com.genimous.peopleoutsourcing.activity.MyApplication;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -55,11 +56,10 @@ public class OpenAppService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
 
         while (true) {
-//            ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-//            List<ActivityManager.RunningTaskInfo> runningTasks = am.getRunningTasks(99);
-//            String packageName = runningTasks.get(0).topActivity
-//                    .getPackageName();
-            String packageName = getLollipopRecentTask(context);
+            ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningTaskInfo> runningTasks = am.getRunningTasks(99);
+            String packageName = runningTasks.get(0).topActivity
+                    .getPackageName();
 //            ActivityManager mActivityManager =(ActivityManager)this.getSystemService(Context.ACTIVITY_SERVICE);
 //            if(Build.VERSION.SDK_INT > 20){
 //                packageName = mActivityManager.getRunningAppProcesses().get(0).processName;
