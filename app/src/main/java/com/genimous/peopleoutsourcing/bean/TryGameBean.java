@@ -6,7 +6,9 @@ package com.genimous.peopleoutsourcing.bean;
 
 public class TryGameBean {
 
-    String appId;
+
+
+    String app_id;
 
     String name;
 
@@ -16,14 +18,13 @@ public class TryGameBean {
 
     String packagename;
 
-    public String getAppId() {
-        return appId;
+    public String getApp_id() {
+        return app_id;
     }
 
-    public void setAppId(String appId) {
-        this.appId = appId;
+    public void setApp_id(String app_id) {
+        this.app_id = app_id;
     }
-
     public String getName() {
         return name;
     }

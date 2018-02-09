@@ -13,10 +13,12 @@ public class DownloadDBEntity {
     private String saveDirPath;
     private String fileName;
     private Integer downloadStatus;
-
-
-
     private String packageName;
+    private String appId;
+    private String appName;
+
+
+
 
     public DownloadDBEntity() {
     }
@@ -36,10 +38,13 @@ public class DownloadDBEntity {
                 ", fileName='" + fileName + '\'' +
                 ", downloadStatus=" + downloadStatus +
                 ", packageName = " +packageName+
+                ", appId = " +appId+
+                ", appName = " +appName+
+
                 '}';
     }
 
-    public DownloadDBEntity(String downloadId, Long toolSize, Long completedSize, String url, String saveDirPath, String fileName, Integer downloadStatus, String packageName) {
+    public DownloadDBEntity(String downloadId, Long toolSize, Long completedSize, String url, String saveDirPath, String fileName, Integer downloadStatus, String packageName, String appId, String appName ) {
         this.downloadId = downloadId;
         this.toolSize = toolSize;
         this.completedSize = completedSize;
@@ -48,6 +53,8 @@ public class DownloadDBEntity {
         this.fileName = fileName;
         this.downloadStatus = downloadStatus;
         this.packageName = packageName;
+        this.appId = appId;
+        this.appName = appName;
     }
 
     public String getDownloadId() {
@@ -113,4 +120,20 @@ public class DownloadDBEntity {
     public void setPackageName(String packageName) {
         this.packageName = packageName;
     }
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
 }

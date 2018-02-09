@@ -1,7 +1,9 @@
 package com.genimous.peopleoutsourcing.service;
 
+import android.Manifest;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -20,11 +23,13 @@ import android.view.accessibility.AccessibilityEvent;
 
 import com.genimous.core.download.DownloadManager;
 import com.genimous.core.download.DownloadTask;
+import com.genimous.core.util.DeviceUtil;
 import com.genimous.core.util.GsonUtil;
 import com.genimous.net.NetAPI;
 import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.activity.MainActivity;
 import com.genimous.peopleoutsourcing.activity.MyApplication;
+import com.genimous.peopleoutsourcing.activity.TryPlayActivity;
 import com.genimous.peopleoutsourcing.presenter.LoginPresenter;
 import com.genimous.peopleoutsourcing.utils.AppUser;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -48,6 +53,7 @@ public class WindowChangeDetectingService extends AccessibilityService{
     NotificationCompat.Builder notificationBuilder;
     NotificationManager mNotificationManager;
     int notifyId ;
+
 
     @Override
     public void onCreate() {
@@ -88,9 +94,12 @@ public class WindowChangeDetectingService extends AccessibilityService{
             downloadTaskList = downloadManager.loadAllTask();
             //是否弹出到试玩界面
             boolean isTryPlay = false;
+            String appId = null;
+            String appName = null;
+
             for (int i = 0; i < downloadTaskList.size(); i++){
-                Log.i("aaa","downloadTaskList.get(i).getPackageName() ==== "
-                        +downloadTaskList.get(i).getPackageName());
+                appId = downloadTaskList.get(i).getAppId();
+                appName = downloadTaskList.get(i).getAppName();
 
                 if (downloadTaskList.get(i).getPackageName().equals(packageName)){
                     isTryPlay = true;
@@ -105,7 +114,7 @@ public class WindowChangeDetectingService extends AccessibilityService{
                 if (!isFinish)
                     return;
 //                setNotification("试玩应用","60秒", notifyId);
-                start();
+                start(appId, appName);
             }
 //            ComponentName componentName = new ComponentName(
 //                    event.getPackageName().toString(),
@@ -153,7 +162,7 @@ public class WindowChangeDetectingService extends AccessibilityService{
 
     int countDownSeconds = 60;
     boolean isFinish = true;
-    private void start(){
+    private void start(final String appId, final String appName){
         isFinish = false;
         countDownTimer = new CountDownTimer(countDownSeconds * 1000, 1000) {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -167,22 +176,31 @@ public class WindowChangeDetectingService extends AccessibilityService{
             public void onFinish() {
                 isFinish = true;
                 mNotificationManager.cancel(notifyId);
+                downLoadRecord(appId, appName, NetAPI.RECORD_STATUS_FINISHED);
+
             }
         };
         countDownTimer.start();
     }
-    public void toLogin(final String mobileNum, final String captcha) {
+    @SuppressLint("MissingPermission")
+    public void downLoadRecord(final String appId, String appName, String status) {
         //联网
 
-        //联网
+
+        Log.i("aaa","userid === "+ AppUser.getUserInfoEntity().getId()+
+        "app_id"+appId+
+        "device_id"+DeviceUtil.getTelephonyManager(WindowChangeDetectingService.this).getDeviceId()+
+        "name"+appName+
+        "status"+status);
+
         OkHttpUtils
                 .post()
-//                    .addParams("type", "login")
                 .url(NetAPI.GET_RECORD_LIST)
                 .addParams("user_id", AppUser.getUserInfoEntity().getId())
-                .addParams("app_id", captcha)
-//                    .postString()
-//                    .content(GsonUtil.newGson().toJson(new CaptchaEntity("login", mobileNum)))
+                .addParams("app_id", appId)
+                .addParams("device_id", DeviceUtil.getTelephonyManager(WindowChangeDetectingService.this).getDeviceId())
+                .addParams("name", appName)
+                .addParams("status", status)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -193,23 +211,9 @@ public class WindowChangeDetectingService extends AccessibilityService{
 
                     @Override
                     public void onResponse(String response, int id) {
+                        Log.i("aaa", "response ＝＝＝＝＝ "+ response);
                         if (!TextUtils.isEmpty(response)) {
-                            LoginPresenter.CaptchaInfoEntity captchaInfoEntity = GsonUtil.newGson().fromJson(response, LoginPresenter.CaptchaInfoEntity.class);
-                            if (captchaInfoEntity.getCode() == NetAPI.SERVER_SUCCESS) {
 
-                                if (captchaInfoEntity.getStatus().equals(NetAPI.HTTP_STATUS_SUCCESS)) {
-//                                    ToastUtil.show("登录成功");
-//                                    getView().loginSuccess();
-
-                                } else {
-//                                    getView().loginFailed("验证失败");
-//                                    getView().hideLoading();
-                                }
-
-                            } else {
-//                                getView().hideLoading();
-//                                getView().loginFailed(captchaInfoEntity.getMsg());
-                            }
                         }
                     }
 

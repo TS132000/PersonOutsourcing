@@ -1,12 +1,19 @@
 package com.genimous.core.util;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import java.util.List;
 
@@ -18,35 +25,8 @@ public class DeviceUtil {
 
 
     public static final int MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS = 1101;
+    public final static int REQUEST_READ_PHONE_STATE = 1002;
 
-    public static String getForegroundActivity(Context context) {
-        String topActivity = "";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            UsageStatsManager m = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
-            if (m != null) {
-                long now = System.currentTimeMillis();
-                //获取60秒之内的应用数据
-                List<UsageStats> stats = m.queryUsageStats(UsageStatsManager.INTERVAL_BEST, now - 60 * 1000, now);
-                Log.i("aaa", "Running app number in last 60 seconds : " + stats.size());
-
-
-
-                //取得最近运行的一个app，即当前运行的app
-                if ((stats != null) && (!stats.isEmpty())) {
-                    int j = 0;
-                    for (int i = 0; i < stats.size(); i++) {
-                        if (stats.get(i).getLastTimeUsed() > stats.get(j).getLastTimeUsed()) {
-                            j = i;
-                        }
-                    }
-                    topActivity = stats.get(j).getPackageName();
-                }
-                Log.i("aaa", "top running app is : " + topActivity);
-            }
-
-        }
-        return topActivity;
-    }
 
     public static boolean hasPermission(Context context) {
         AppOpsManager appOps = (AppOpsManager)
@@ -59,67 +39,108 @@ public class DeviceUtil {
         return mode == AppOpsManager.MODE_ALLOWED;
     }
 
-//    /**
-//     * 获取系统运行的进程信息
-//     *
-//     * @param context
-//     * @return
-//     */
-//    public static List<TaskInfo> getTaskInfos1(Context context) {
-//        // 应用程序管理器
-//        ActivityManager am = (ActivityManager) context
-//                .getSystemService(context.ACTIVITY_SERVICE);
-//
-//        // 应用程序包管理器
-//        PackageManager pm = context.getPackageManager();
-//
-//        // 获取正在运行的程序信息, 就是以下粗体的这句代码,获取系统运行的进程     要使用这个方法，需要加载
-//　　　　　  　//　import com.jaredrummler.android.processes.ProcessManager;
-//　　　　　　　//　import com.jaredrummler.android.processes.models.AndroidAppProcess;  这两个包, 这两个包附件可以下载
-//
-//        List<AndroidAppProcess> processInfos = ProcessManager.getRunningAppProcesses();
-//
-//        List<TaskInfo> taskinfos = new ArrayList<TaskInfo>();
-//        // 遍历运行的程序,并且获取其中的信息
-//        for (AndroidAppProcess processInfo : processInfos) {
-//            TaskInfo taskinfo = new TaskInfo();
-//            // 应用程序的包名
-//            String packname = processInfo.name;
-//            taskinfo.setPackname(packname);
-//            // 湖区应用程序的内存 信息
-//            android.os.Debug.MemoryInfo[] memoryInfos = am
-//                    .getProcessMemoryInfo(new int[] { processInfo.pid });
-//            long memsize = memoryInfos[0].getTotalPrivateDirty() * 1024L;
-//            taskinfo.setMemsize(memsize);
-//            try {
-//                // 获取应用程序信息
-//                ApplicationInfo applicationInfo = pm.getApplicationInfo(
-//                        packname, 0);
-//                Drawable icon = applicationInfo.loadIcon(pm);
-//                taskinfo.setIcon(icon);
-//                String name = applicationInfo.loadLabel(pm).toString();
-//                taskinfo.setName(name);
-//                if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-//                    // 用户进程
-//                    taskinfo.setUserTask(true);
-//                } else {
-//                    // 系统进程
-//                    taskinfo.setUserTask(false);
-//                }
-//            } catch (NameNotFoundException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//                // 系统内核进程 没有名称
-//                taskinfo.setName(packname);
-//                Drawable icon = context.getResources().getDrawable(
-//                        R.drawable.default_icon);
-//                taskinfo.setIcon(icon);
-//            }
-//            if (taskinfo != null) {
-//                taskinfos.add(taskinfo);
-//            }
-//        }
-//        return taskinfos;
-//    }
+
+    private static TelephonyManager tm;
+
+    /**
+     * 获取SIM硬件信息
+     *
+     * @return
+     */
+    @SuppressLint("MissingPermission")
+    public static TelephonyManager getTelephonyManager(Context context) {
+        if (tm == null)
+            tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        StringBuffer sb = new StringBuffer();
+        sb.append("\nDeviceId(IMEI) = " + tm.getDeviceId());
+        sb.append("\nDeviceSoftwareVersion = " + tm.getDeviceSoftwareVersion());
+        sb.append("\nLine1Number = " + tm.getLine1Number());
+        sb.append("\nNetworkCountryIso = " + tm.getNetworkCountryIso());
+        sb.append("\nNetworkOperator = " + tm.getNetworkOperator());
+        sb.append("\nNetworkOperatorName = " + tm.getNetworkOperatorName());
+        sb.append("\nNetworkType = " + tm.getNetworkType());
+        sb.append("\nPhoneType = " + tm.getPhoneType());
+        sb.append("\nSimCountryIso = " + tm.getSimCountryIso());
+        sb.append("\nSimOperator = " + tm.getSimOperator());
+        sb.append("\nSimOperatorName = " + tm.getSimOperatorName());
+        sb.append("\nSimSerialNumber = " + tm.getSimSerialNumber());
+        sb.append("\nSimState = " + tm.getSimState());
+        sb.append("\nSubscriberId(IMSI) = " + tm.getSubscriberId());
+        sb.append("\nVoiceMailNumber = " + tm.getVoiceMailNumber());
+        Log.i("aaa", ""+sb.toString());
+        return tm;
+    }
+
+    /**
+     * 获取屏幕分辨率
+     *
+     * @return
+     */
+    public static int[] getMetrics(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        int width = point.x;
+        int height = point.y;
+        int[] metrics = {width, height};
+        return metrics;
+    }
+
+    /**
+     * 设备厂商
+     *
+     * @return
+     */
+    public static String getPhoneBrand() {
+        return Build.BOARD + "  " + Build.MANUFACTURER;
+    }
+
+    /**
+     * 设备名称
+     *
+     * @return
+     */
+    public static String getPhoneModel() {
+        return Build.MODEL;
+    }
+
+    /**
+     * 得到软件版本号
+     *
+     * @param context 上下文
+     * @return 当前版本Code
+     */
+    public static int getVerCode(Context context) {
+        int verCode = -1;
+        try {
+            String packageName = context.getPackageName();
+            verCode = context.getPackageManager()
+                    .getPackageInfo(packageName, 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return verCode;
+    }
+
+    /**
+     * 获得APP名称
+     *
+     * @param context
+     * @return
+     */
+    public static String getAppName(Context context) {
+        String appName = "";
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            ApplicationInfo applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), 0);
+            appName = (String) packageManager.getApplicationLabel(applicationInfo);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return appName;
+    }
+
+
 
 }

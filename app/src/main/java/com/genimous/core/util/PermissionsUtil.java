@@ -38,9 +38,9 @@ public class PermissionsUtil {
             if(!Settings.canDrawOverlays(activity)) {
 //                mCheckBox.setChecked(false);
                 activity.startActivityForResult(
-                        new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.getPackageName()))
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
-                        PERMISSIONSUTIL_REQUEST_CODE
+                                new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.getPackageName()))
+                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+                                PERMISSIONSUTIL_REQUEST_CODE
                 );
             }
 
