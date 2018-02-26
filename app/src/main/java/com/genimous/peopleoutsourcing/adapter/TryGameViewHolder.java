@@ -32,6 +32,10 @@ public class TryGameViewHolder extends RecyclerView.Adapter<TryGameViewHolder.My
         this.listener = listener;
     }
 
+    public void updateList(ArrayList<TryGameBean> tbeanList){
+        this.tbeanList = tbeanList;
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -43,14 +47,18 @@ public class TryGameViewHolder extends RecyclerView.Adapter<TryGameViewHolder.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 //            holder.open_permission_tv.setText(tbeanList.get(position).getPrrmissionStr());
-        Log.i("aaa","tbeanList.get(position).getIcon() ======= "+tbeanList.get(position).getIcon());
+//        Log.i("aaa","tbeanList.get(position).getIcon() ======= "+tbeanList.get(position).getIcon());
         Glide.with(context).load(tbeanList.get(position).getIcon())
                 .error(R.mipmap.icon)
                 .into( holder.ImageView_ItemTryGame_icon);
 
-            holder.TextView_ItemTryGame_title.setText(tbeanList.get(position).getName());
+        holder.TextView_ItemTryGame_title.setText(tbeanList.get(position).getName());
+
 //            holder.ImageView_ItemTryGame_icon
 //                    .setText(tbeanList.get(position).getPermissionFailDesc());
+        String downLoadPersent = tbeanList.get(position).getDownLoadPersent();
+        if (downLoadPersent!=null && downLoadPersent.indexOf("%") != -1)
+            holder.TextView_ItemTryGame_button.setText(tbeanList.get(position).getDownLoadPersent());
 
         holder.TextView_ItemTryGame_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,7 +20,6 @@
                 android:id="@+id/header_background_sdv"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-
                 android:background="@drawable/header_background_image"
                 android:scaleType="fitXY" />
 
@@ -50,6 +49,7 @@
                         style="@style/Text.Normal.White"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="nickname"
                         android:layout_marginTop="@dimen/nickname_margin_top"
                         android:singleLine="true" />
 
@@ -70,6 +70,7 @@
                             style="@style/Text.Small.White"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:drawableRight="@drawable/arrow_drop_up_gray" />
                     </LinearLayout>
                 </LinearLayout>

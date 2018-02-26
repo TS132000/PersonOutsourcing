@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
@@ -31,8 +32,12 @@ public class MakeMoneyFragment extends BaseFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         tabLayout = (PageBottomTabLayout)view.findViewById(R.id.PageBottomTabLayout_makeMoneyFragment);
+        //就一个页面，隐藏tablayout
+        tabLayout.setVisibility(View.GONE);
         viewPager = (ViewPager)view.findViewById(R.id.ViewPager_makeMoneyFragment );
         mFragments[0] = SubFastMoney.newInstance(new Bundle());
+        TextView baseFragmentTitle = (TextView)view.findViewById(R.id.baseFragmentTitle);
+        baseFragmentTitle.setText("赚钱");
 //        mFragments[1] = SubDataCollectFragment.newInstance(new Bundle());
 //        mFragments[2] = SubFastMoney.newInstance(new Bundle());
 //        mFragments[3] = SubDataCollectFragment.newInstance(new Bundle());

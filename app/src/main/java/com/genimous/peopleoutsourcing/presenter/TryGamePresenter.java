@@ -1,12 +1,16 @@
 package com.genimous.peopleoutsourcing.presenter;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.genimous.core.mvp.BasePresenter;
+import com.genimous.core.util.DeviceUtil;
 import com.genimous.core.util.GsonUtil;
 import com.genimous.core.util.ToastUtil;
 import com.genimous.net.NetAPI;
+import com.genimous.peopleoutsourcing.activity.SplashActivity;
 import com.genimous.peopleoutsourcing.bean.BaseUrlBean;
 import com.genimous.peopleoutsourcing.bean.TryGameBean;
 import com.genimous.peopleoutsourcing.contract.LoginContract;
@@ -29,12 +33,13 @@ public class TryGamePresenter extends BasePresenter<TryGameContract.tryGameView,
 
 
 
+    @SuppressLint("MissingPermission")
     @Override
-    public void getGameList() {
+    public void getGameList(Context context) {
         Log.i("aaa","getGameList ＝＝＝＝ ");
         //联网
         OkHttpUtils.get()
-            .url(NetAPI.GET_TRYGAME_LIST)
+            .url(NetAPI.GET_TRYGAME_LIST+"/"+ DeviceUtil.getTelephonyManager(context).getDeviceId())
                 .build()
                 .execute(new StringCallback() {
                     @Override

@@ -20,7 +20,6 @@ import com.genimous.peopleoutsourcing.fragment.DiscoverFragment;
 import com.genimous.peopleoutsourcing.fragment.InviteFragment;
 import com.genimous.peopleoutsourcing.fragment.MakeMoneyFragment;
 import com.genimous.peopleoutsourcing.fragment.UserCenterFragment;
-import com.genimous.peopleoutsourcing.service.OpenAppService;
 import com.genimous.peopleoutsourcing.service.WindowChangeDetectingService;
 import com.genimous.peopleoutsourcing.view.IconTitleItemView;
 

@@ -25,9 +25,12 @@
         android:layout_gravity="center"
         style="@style/Text.Micro.Orange"
         android:layout_marginRight="@dimen/dp_16"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingRight="@dimen/dp_5"
+        android:background="@drawable/shape_button_bg"
         android:textSize="@dimen/f6" />
-
-
 
     <TextView
         android:id="@+id/TextView_ItemMakeMoney_title"
@@ -40,7 +43,6 @@
         android:layout_gravity="center"
         android:text="试玩应用"
         style="@style/Text.Normal.Black"
-
         android:textSize="@dimen/f1" />
     <TextView
         android:id="@+id/TextView_ItemMakeMoney_info"

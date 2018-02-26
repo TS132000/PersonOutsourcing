@@ -1,5 +1,7 @@
 package com.genimous.peopleoutsourcing.contract;
 
+import android.content.Context;
+
 import com.genimous.core.mvp.IModel;
 import com.genimous.core.mvp.IView;
 import com.genimous.peopleoutsourcing.bean.TryGameBean;
@@ -15,7 +17,7 @@ public interface TryGameContract {
 
      interface tryGameModle extends IModel{
 
-         void getGameList();
+         void getGameList(Context context);
 
     }
 

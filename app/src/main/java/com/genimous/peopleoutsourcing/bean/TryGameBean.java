@@ -18,6 +18,8 @@ public class TryGameBean {
 
     String packagename;
 
+    String downLoadPersent;
+
     public String getApp_id() {
         return app_id;
     }
@@ -55,5 +57,14 @@ public class TryGameBean {
 
     public void setPackagename(String packagename) {
         this.packagename = packagename;
+    }
+
+
+    public String getDownLoadPersent() {
+        return downLoadPersent;
+    }
+
+    public void setDownLoadPersent(String downLoadPersent) {
+        this.downLoadPersent = downLoadPersent;
     }
 }

@@ -122,14 +122,14 @@ public class DownloadTask implements Runnable {
                             //这两句根据需要自行选择是否注释，注释掉的话由于少了数据库的读取，速度会快一点，但同时如果在下载过程程序崩溃的话，程序不会保存最新的下载进度,并且下载过程不会更新进度
                             dbEntity.setCompletedSize(completedSize);
                             downloadDao.update(dbEntity);
-                            Log.d("onDownloading1",dbEntity.toString());
+//                            Log.d("onDownloading1",dbEntity.toString());
 
                             onDownloading();
                         }
                     }
                     dbEntity.setCompletedSize(completedSize);
                     downloadDao.update(dbEntity);
-                    Log.d("onDownloading2",dbEntity.toString());
+//                    Log.d("onDownloading2",dbEntity.toString());
 
                     onDownloading();
                 }
@@ -311,7 +311,7 @@ public class DownloadTask implements Runnable {
     }
 
     private void onDownloading() {
-        Log.d("onDownloading",id+"listener size:"+listeners.size());
+//        Log.d("onDownloading",id+"listener size:"+listeners.size());
         for (DownloadTaskListener listener : listeners) {
             listener.onDownloading(this);
         }

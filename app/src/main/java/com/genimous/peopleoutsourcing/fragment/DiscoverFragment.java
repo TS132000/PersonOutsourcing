@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
@@ -27,6 +28,8 @@ public class DiscoverFragment extends BaseFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         mLoadStatusView = (LoadStatusView)view.findViewById(R.id.LoadStatusView_Discover_status);
         mLoadStatusView.setViewStatus(LoadStatusView.LoadStatus.NO_NET);
+        TextView baseFragmentTitle = (TextView)view.findViewById(R.id.baseFragmentTitle);
+        baseFragmentTitle.setText("发现");
     }
 
 
@@ -37,6 +40,7 @@ public class DiscoverFragment extends BaseFragment {
 
 
     public static DiscoverFragment newInstance(Bundle bundle) {
+
         DiscoverFragment fragment = new DiscoverFragment();
         fragment.setArguments(bundle);
         return fragment;

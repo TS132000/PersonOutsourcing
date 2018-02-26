@@ -12,6 +12,7 @@ import com.genimous.peopleoutsourcing.entity.UserInfoEntity;
  */
 
 public class AppUser {
+
     private static UserInfoEntity sUserInfoEntity;
 
     public static void init(){

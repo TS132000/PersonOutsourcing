@@ -10,11 +10,28 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.os.Build;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -69,6 +86,11 @@ public class DeviceUtil {
         sb.append("\nVoiceMailNumber = " + tm.getVoiceMailNumber());
         Log.i("aaa", ""+sb.toString());
         return tm;
+    }
+
+    public static String getAndroidId (Context context) {
+        String ANDROID_ID = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
+        return ANDROID_ID;
     }
 
     /**
@@ -140,7 +162,38 @@ public class DeviceUtil {
         }
         return appName;
     }
+    /**
+     * 获取ip地址
+     * @return
+     */
+    public static String getHostIP() {
 
+        String hostIp = null;
+        try {
+            Enumeration nis = NetworkInterface.getNetworkInterfaces();
+            InetAddress ia = null;
+            while (nis.hasMoreElements()) {
+                NetworkInterface ni = (NetworkInterface) nis.nextElement();
+                Enumeration<InetAddress> ias = ni.getInetAddresses();
+                while (ias.hasMoreElements()) {
+                    ia = ias.nextElement();
+                    if (ia instanceof Inet6Address) {
+                        continue;// skip ipv6
+                    }
+                    String ip = ia.getHostAddress();
+                    if (!"127.0.0.1".equals(ip)) {
+                        hostIp = ia.getHostAddress();
+                        break;
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            Log.i("yao", "SocketException");
+            e.printStackTrace();
+        }
+        return hostIp;
+
+    }
 
 
 }

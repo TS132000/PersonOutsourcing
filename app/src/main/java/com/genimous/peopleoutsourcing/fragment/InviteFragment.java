@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.genimous.peopleoutsourcing.R;
 import com.genimous.peopleoutsourcing.base.BaseFragment;
@@ -46,6 +47,8 @@ public class InviteFragment extends BaseFragment implements SharePopupWindow.Sha
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        TextView baseFragmentTitle = (TextView)view.findViewById(R.id.baseFragmentTitle);
+        baseFragmentTitle.setText("邀请");
         viewPagerTop = (ViewPager) view.findViewById(R.id.Viewpager_invokeFragment_top);
         ViewPagerBottom = (ViewPager)view.findViewById(R.id.Viewpager_invokeFragment_bottom);
         imageView_invokeFragment_share = (ImageView)view.findViewById(R.id.imageView_invokeFragment_share);

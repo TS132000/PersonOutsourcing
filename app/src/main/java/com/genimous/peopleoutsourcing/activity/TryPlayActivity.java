@@ -124,7 +124,7 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
 
     private void onRefresh() {
         showLoading("");
-        this.mPresenter.getGameList();
+        this.mPresenter.getGameList(TryPlayActivity.this);
     }
 
     private void initData() {
@@ -164,13 +164,10 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
     //list按钮点击
     @Override
     public void onItemClick(int position) {
-        Log.i("aaa", "onItemClickonItemClick");
-
-        Log.i("aaa", "appid ===== " + tryGameList.get(position).getApp_id());
-        Log.i("aaa", "getName ===== " + tryGameList.get(position).getName());
 
         if(downLoadRecord(tryGameList.get(position).getApp_id(), tryGameList.get(position).getName(), NetAPI.RECORD_STATUS_STARTED)){
-            download(tryGameList.get(position).getDownUrl(), tryGameList.get(position).getPackagename(), tryGameList.get(position).getApp_id(), tryGameList.get(position).getName());
+            download(tryGameList.get(position).getDownUrl(), tryGameList.get(position).getPackagename(),
+                    tryGameList.get(position).getApp_id(), tryGameList.get(position).getName(),position);
         }
 
 
@@ -216,13 +213,12 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
 
     int counter = 1001;
 
-    private void download(String url, String packageName, String appId, String appName) {
+    private void download(String url, String packageName, String appId, String appName, final int position) {
 //        tv.setEnabled(false);
         DownloadTask task = new DownloadTask();
         String fileName = MD5.MD5(url);
 
         task.setFileName(fileName);
-        Log.i("aaa", "packageName= " + packageName);
         task.setPackageName(packageName);
         task.setAppId(appId);
         task.setAppName(appName);
@@ -268,8 +264,12 @@ public class TryPlayActivity extends BaseMvpActivity<TryGamePresenter> implement
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-//                        tv.setText((int) downloadTask.getPercent() + "%       ");
+//                      tv.setText((int) downloadTask.getPercent() + "%       ");
+                        tryGameList.get(position).setDownLoadPersent( downloadTask.getPercent() + "%");
+                        tryGameViewHolder.updateList(tryGameList);
 
+                        Log.i("aaa"," downloadTask.getPercent() + \"%\" ==== "+tryGameList.get(position).getDownLoadPersent());
+                        tryGameViewHolder.notifyItemChanged(position);
                         updateNotification(downloadTask.getFileName(),
                                 (int) downloadTask.getPercent(), downloadTask.getToolSize(), downloadTask.getId().hashCode());
 
